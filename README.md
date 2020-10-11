@@ -21,6 +21,7 @@ interested in the book and dark forest principle. That's the main motivation tha
 
 A *bulleted* list:
 - As a user, I want to have a primitive civilization every time I start a new game.
+- As a user, I want to add customized enemy civilization to the Universe
 - As a user, I want to be assigned a certain amounts of development points each time unit.
 - As a user, I want to be able to add development points to one of three fields, namely, technology,society and 
   culture.
@@ -28,12 +29,8 @@ A *bulleted* list:
   other civilizations after a certain level of technology.
 - As a user, I want to be able to make decision on whether should I respond to the request of contact from other 
   civilizations, which will immediately lead to a conflict. 
-- As a user, I want to able to choose the path for the future of my own civilization after a certain level of 
-  development.
 - As a user, I want to be able to end one time unit after I've finished all my action.
 - As a user, I want be able to record how many time units I've survived after my civilization's been destroyed, and be 
   able to choose whether to start a new round of game or not.
   
 
-An example of text with **bold** and *italic* fonts.  Note that the IntelliJ markdown previewer doesn't seem to render 
-the bold and italic fonts correctly, but they will appear correctly on GitHub.
