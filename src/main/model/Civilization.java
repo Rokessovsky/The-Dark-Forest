@@ -11,10 +11,10 @@ public class Civilization {
     private int developmentPoints;
 
     private int darkForestKnownCulture = 15;
-    private int matureSociety;
+    private int matureSociety = 50;
 
     private int dimension;
-    private int developmentLimits = dimension * 10;
+    private int developmentLimits;
 
 
     private boolean isExposed;
@@ -27,10 +27,12 @@ public class Civilization {
     private int techLevel2 = (developmentLimits / 4) * 2;
     private int techLevel3 = (developmentLimits / 4) * 3;
 
+
+
     //constructor
     //REQUIRE: technology,society and culture have to be smaller or equal than developmentLimits
     //construct a civilization with certain technology,society and culture level.
-    public Civilization(String name,int technology, int society, int culture) {
+    public Civilization(String name,int technology, int society, int culture,Universe universe) {
         this.name = name;
 
         this.technology = technology;
@@ -43,6 +45,11 @@ public class Civilization {
         this.isExposed = false;
         this.isHarmful = true;
 
+        this.dimension = universe.getDimension();
+        this.developmentLimits = dimension * 10;
+
+
+
 
         this.hasLightSpeedTravel = technology >= techLevel3 && society >= matureSociety;
         this.hasDarkForestPrinciple = culture >= darkForestKnownCulture;
@@ -51,28 +58,50 @@ public class Civilization {
     }
 
     //MODIFIES:this
+    //REQUIRES: num >= 0
     //EFFECTS: add development points
     public void addDevelopmentPoints(int num) {
         developmentPoints += num;
     }
 
     //MODIFIES:this
-    //EFFECTS: add technology level by 1 if there're still available development points
-    public void addTechnology() {
-        technology++;
+    //EFFECTS: add technology level by 1 and return true if there're still available development points
+    //         and level hasn't reach the limits.Otherwise return false.
+    public Boolean addTechnology() {
+        if (developmentPoints > 0 && technology < developmentLimits) {
+            technology++;
+            developmentPoints--;
+            return true;
+        } else {
+            return false;
+        }
     }
 
 
     //MODIFIES:this
-    //EFFECTS: add society level by 1 if there're still available development points
-    public void addSociety() {
-        society++;
+    //EFFECTS: add society level by 1 and return true if there're still available development points
+    //         and level hasn't reach the limits.Otherwise return false.
+    public Boolean addSociety() {
+        if (developmentPoints > 0 && society < developmentLimits) {
+            society++;
+            developmentPoints--;
+            return true;
+        } else {
+            return false;
+        }
     }
 
     //MODIFIES:this
-    //EFFECTS: add culture level by 1 if there're still available development points
-    public void addCulture() {
-        culture++;
+    //EFFECTS: add culture level by 1 and return true if there're still available development points
+    //         and level hasn't reach the limits.Otherwise return false.
+    public Boolean addCulture() {
+        if (developmentPoints > 0 && culture < developmentLimits) {
+            culture++;
+            developmentPoints--;
+            return true;
+        } else {
+            return false;
+        }
     }
 
     //MODIFIES: this
@@ -104,9 +133,21 @@ public class Civilization {
         return developmentPoints;
     }
 
+    //REQUIRES: num >= 0
+    //EFFECTS : set the DevelopmentPoints
+    public void setDevelopmentPoints(int num) {
+        this.developmentPoints = num;
+    }
+
     //EFFECTS: get the technology level
     public int getTechnology() {
         return technology;
+    }
+
+    //REQUIRES: num >= 0
+    //EFFECTS : set the technology level
+    public void setTechnology(int num) {
+        this.technology = num;
     }
 
     //EFFECTS: get the society level
@@ -114,19 +155,32 @@ public class Civilization {
         return society;
     }
 
+    //REQUIRES: num >= 0
+    //EFFECTS: set the society level
+    public void setSociety(int num) {
+        this.society = num;
+    }
+
     //EFFECTS: get the culture level
     public int getCulture() {
         return culture;
     }
 
-    //EFFECTS: get the dimension of the culture
-    public int getDimension() {
-        return dimension;
+    //REQUIRES: num >= 0
+    //EFFECTS: set the culture level
+    public void setCulture(int num) {
+        this.culture = num;
     }
+
 
     //EFFECTS: get the value of isExposed
     public boolean getIsExposed() {
         return isExposed;
+    }
+
+    //EFFECTS : set the value of isExposed
+    public void setIsExposed(boolean i) {
+        this.isExposed = i;
     }
 
     //EFFECTS: get the value of isHarmful
@@ -134,14 +188,42 @@ public class Civilization {
         return isHarmful;
     }
 
+    //EFFECTS : set the value of isHarmful
+    public void setIsHarmful(boolean i) {
+        this.isHarmful = i;
+    }
+
+    //EFFECTS: get the value of hasStarFleet
+    public boolean getHasStarFleet() {
+        return hasStarFleet;
+    }
+
+    //EFFECTS : set the value of hasStarFleet
+    public void setHasStarFleet(boolean i) {
+        this.hasStarFleet = i;
+    }
+
+
     //EFFECTS: get the value of hasSophons
     public boolean getHasSophons() {
         return hasSophons;
     }
 
+    //EFFECTS : set the value of hasSophons
+    public void setHasSophons(boolean i) {
+        this.hasSophons = i;
+    }
+
+
+
     //EFFECTS: get the value of hasDarkForestPrinciple
     public boolean getHasDarkForestPrinciple() {
         return hasDarkForestPrinciple;
+    }
+
+    //EFFECTS : set the value of hasDarkForestPrinciple
+    public void setDarkForestPrinciple(boolean i) {
+        this.hasDarkForestPrinciple = i;
     }
 
     //EFFECTS: get the value of hasLightSpeedTravel
@@ -149,11 +231,31 @@ public class Civilization {
         return hasLightSpeedTravel;
     }
 
+    //EFFECTS : set the value of hasLightSpeedTravel
+    public void setLightSpeedTravel(boolean i) {
+        this.hasLightSpeedTravel = i;
+    }
 
+    //EFFECTS: get development limits
+    public int getDevelopmentLimits() {
+        return developmentLimits;
+    }
 
+    //REQUIRES: num >= 0
+    //EFFECTS: set development limits
+    public void setDevelopmentLimits(int num) {
+        this.developmentLimits = num;
+    }
 
+    //EFFECTS : get the name of the civilization
+    public String getName() {
+        return name;
+    }
 
-
+    //EFFECTS : set the name of the civilization
+    public void setName(String name) {
+        this.name = name;
+    }
 
 
 }

@@ -9,8 +9,7 @@ will gain certain amounts of development points that can be used to develop tech
 each time unit.After a certain time or a certain development level players will encounter other civilizations
 either proactively or passively depends on the details of the development of player's civilization. Based on 
 the **Dark Forest Principle** the two civilization will only try to destroy each other and only one civilization
-will survive. The goal of the player is to survive as long as possible, there'll be no such thing called winning
-in this game there will be infinite number of civilizations.
+will survive. The goal of the player is to survive as long as possible, and eliminate all other civilizations.
 
 Anyone could play this game, especially those who has read the Liu Cixi's Three Body Problem.I'm very
 interested in the book and dark forest principle. That's the main motivation that trigger me to do this project.
