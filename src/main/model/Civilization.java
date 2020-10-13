@@ -1,31 +1,35 @@
 package model;
 
 //Represent a civilization with int technology, society and culture level,dimension,developLimit.And boolean value of
-//is exposed to university,has obtained Dark Forest Principle knowledge and light speed drive technology,is harmful.
+//is exposed to university,has obtained Dark Forest Principle knowledge,light speed drive technology,is harmful.
 public class Civilization {
     private String name;
 
     private int technology;
     private int society;
     private int culture;
-    private int developmentPoints;
+    private int resources;
 
-    private int darkForestKnownCulture = 15;
-    private int matureSociety = 50;
+
 
     private int dimension;
     private int developmentLimits;
 
 
+
+
     private boolean isExposed;
     private boolean isHarmful;
+    private boolean hasInterCivilCommunication;
     private boolean hasStarFleet;
-    private boolean hasSophons;
     private boolean hasDarkForestPrinciple;
     private boolean hasLightSpeedTravel;
-    private int techLevel1 = developmentLimits / 4;
-    private int techLevel2 = (developmentLimits / 4) * 2;
-    private int techLevel3 = (developmentLimits / 4) * 3;
+
+    private int darkForestKnownCulture;
+    private int matureSociety;
+    private int techLevel1;
+    private int techLevel2;
+    private int techLevel3;
 
 
 
@@ -39,7 +43,7 @@ public class Civilization {
         this.society = society;
         this.culture = culture;
 
-        this.developmentPoints = 0;
+        this.resources = 0;
         //dimension
 
         this.isExposed = false;
@@ -48,29 +52,35 @@ public class Civilization {
         this.dimension = universe.getDimension();
         this.developmentLimits = dimension * 10;
 
-
+        darkForestKnownCulture = developmentLimits / 3;
+        matureSociety = developmentLimits / 2;
+        techLevel1 = developmentLimits / 4;
+        techLevel2 = (developmentLimits / 4) * 2;
+        techLevel3 = (developmentLimits / 4) * 3;
 
 
         this.hasLightSpeedTravel = technology >= techLevel3 && society >= matureSociety;
         this.hasDarkForestPrinciple = culture >= darkForestKnownCulture;
-        this.hasSophons = technology >= techLevel2;
-        this.hasStarFleet = technology >= techLevel1;
+        this.hasStarFleet = technology >= techLevel2;
+        this.hasInterCivilCommunication = technology >= techLevel1;
+
+
     }
 
     //MODIFIES:this
     //REQUIRES: num >= 0
-    //EFFECTS: add development points
-    public void addDevelopmentPoints(int num) {
-        developmentPoints += num;
+    //EFFECTS: add resources
+    public void addResources(int num) {
+        resources += num;
     }
 
     //MODIFIES:this
     //EFFECTS: add technology level by 1 and return true if there're still available development points
     //         and level hasn't reach the limits.Otherwise return false.
     public Boolean addTechnology() {
-        if (developmentPoints > 0 && technology < developmentLimits) {
+        if (resources > 0 && technology < developmentLimits) {
             technology++;
-            developmentPoints--;
+            resources--;
             return true;
         } else {
             return false;
@@ -82,9 +92,9 @@ public class Civilization {
     //EFFECTS: add society level by 1 and return true if there're still available development points
     //         and level hasn't reach the limits.Otherwise return false.
     public Boolean addSociety() {
-        if (developmentPoints > 0 && society < developmentLimits) {
+        if (resources > 0 && society < developmentLimits) {
             society++;
-            developmentPoints--;
+            resources--;
             return true;
         } else {
             return false;
@@ -95,9 +105,9 @@ public class Civilization {
     //EFFECTS: add culture level by 1 and return true if there're still available development points
     //         and level hasn't reach the limits.Otherwise return false.
     public Boolean addCulture() {
-        if (developmentPoints > 0 && culture < developmentLimits) {
+        if (resources > 0 && culture < developmentLimits) {
             culture++;
-            developmentPoints--;
+            resources--;
             return true;
         } else {
             return false;
@@ -129,14 +139,14 @@ public class Civilization {
     }
 
     //EFFECTS: get the remaining development points
-    public int getDevelopmentPoints() {
-        return developmentPoints;
+    public int getResources() {
+        return resources;
     }
 
     //REQUIRES: num >= 0
     //EFFECTS : set the DevelopmentPoints
-    public void setDevelopmentPoints(int num) {
-        this.developmentPoints = num;
+    public void setResources(int num) {
+        this.resources = num;
     }
 
     //EFFECTS: get the technology level
@@ -194,24 +204,24 @@ public class Civilization {
     }
 
     //EFFECTS: get the value of hasStarFleet
-    public boolean getHasStarFleet() {
-        return hasStarFleet;
+    public boolean getHasInterCivilCommunication() {
+        return hasInterCivilCommunication;
     }
 
     //EFFECTS : set the value of hasStarFleet
-    public void setHasStarFleet(boolean i) {
-        this.hasStarFleet = i;
+    public void setHasInterCivilCommunication(boolean i) {
+        this.hasInterCivilCommunication = i;
     }
 
 
     //EFFECTS: get the value of hasSophons
-    public boolean getHasSophons() {
-        return hasSophons;
+    public boolean getHasStarFleet() {
+        return hasStarFleet;
     }
 
     //EFFECTS : set the value of hasSophons
-    public void setHasSophons(boolean i) {
-        this.hasSophons = i;
+    public void setHasStarFleet(boolean i) {
+        this.hasStarFleet = i;
     }
 
 
@@ -235,6 +245,76 @@ public class Civilization {
     public void setLightSpeedTravel(boolean i) {
         this.hasLightSpeedTravel = i;
     }
+
+    //EFFECTS: get techLevel1
+    public int getTechLevel1() {
+        return techLevel1;
+    }
+
+    //REQUIRES: num >=0
+    //EFFECTS: set techLevel1
+    public void setTechLevel1(int num) {
+        this.techLevel1 = num;
+    }
+
+    //EFFECTS: get techLevel2
+    public int getTechLevel2() {
+        return techLevel2;
+    }
+
+    //REQUIRES: num >=0
+    //EFFECTS: set techLevel2
+    public void setTechLevel2(int num) {
+        this.techLevel2 = num;
+    }
+
+    //EFFECTS: get techLevel3
+    public int getTechLevel3() {
+        return techLevel3;
+    }
+
+    //REQUIRES: num >=0
+    //EFFECTS: set techLevel3
+    public void setTechLevel3(int num) {
+        this.techLevel3 = num;
+    }
+
+    //EFFECTS: get dimension
+    public int getDimension() {
+        return dimension;
+    }
+
+    //REQUIRES: num >=0
+    //EFFECTS: set dimension
+    public void setDimension(int num) {
+        this.dimension = num;
+    }
+
+    //EFFECTS: get darkForestKnownCulture
+    public int getDarkForestKnownCulture() {
+        return darkForestKnownCulture;
+    }
+
+    //REQUIRES: num >=0
+    //EFFECTS: set darkForestKnownCulture
+    public void setDarkForestKnownCulture(int num) {
+        this.darkForestKnownCulture = num;
+    }
+
+    //EFFECTS: get matureSociety
+    public int getMatureSociety() {
+        return matureSociety;
+    }
+
+    //REQUIRES: num >=0
+    //EFFECTS: set matureSociety
+    public void setMatureSociety(int num) {
+        this.matureSociety = num;
+    }
+
+
+
+
 
     //EFFECTS: get development limits
     public int getDevelopmentLimits() {
