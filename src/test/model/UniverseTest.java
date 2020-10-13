@@ -37,17 +37,21 @@ public class UniverseTest {
 
     @Test
     public void testAddCivilizationNoDuplicate() {
+        assertTrue(galaxy.addCivilization(earth));
         galaxy.addCivilization(earth);
         assertEquals(1,galaxy.getCivilizations().size());
 
+        assertTrue(galaxy.addCivilization(threeBody));
         galaxy.addCivilization(threeBody);
         assertEquals(2,galaxy.getCivilizations().size());
     }
 
     @Test
     public void testAddCivilizationDuplicate() {
+        assertTrue(galaxy.addCivilization(earth));
         galaxy.addCivilization(earth);
         assertEquals(1,galaxy.getCivilizations().size());
+
 
         assertFalse(galaxy.addCivilization(earth));
         galaxy.addCivilization(earth);
@@ -56,6 +60,7 @@ public class UniverseTest {
 
     @Test
     public void testDestroyCivilizationInSet() {
+
         galaxy.addCivilization(earth);
         galaxy.addCivilization(threeBody);
 
