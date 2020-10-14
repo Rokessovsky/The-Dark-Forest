@@ -107,10 +107,10 @@ class CivilizationTest {
 
     @Test
     public void testAddTechnologyNoDPAndFull() {
-        assertEquals(0,earth.getResources());
-        earth.setTechnology(100);
+        Civilization c = new Civilization("c",100,100,100,solar);
 
-        assertFalse(earth.addTechnology());
+        assertEquals(0,c.getResources());
+        assertFalse(c.addTechnology());
     }
 
     @Test
@@ -146,10 +146,11 @@ class CivilizationTest {
 
     @Test
     public void testAddSocietyNoDPAndFull() {
-        assertEquals(0,earth.getResources());
-        earth.setSociety(100);
 
-        assertFalse(earth.addSociety());
+        Civilization c = new Civilization("c",100,100,100,solar);
+        assertEquals(0,c.getResources());
+
+        assertFalse(c.addSociety());
     }
 
     @Test
@@ -185,10 +186,11 @@ class CivilizationTest {
 
     @Test
     public void testAddCultureNoDPAndFull() {
-        assertEquals(0,earth.getResources());
-        earth.setCulture(100);
 
-        assertFalse(earth.addCulture());
+        Civilization c = new Civilization("c",100,100,100,solar);
+
+        assertEquals(0,c.getResources());
+        assertFalse(c.addCulture());
     }
 
     @Test
