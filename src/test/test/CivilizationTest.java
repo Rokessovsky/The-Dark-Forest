@@ -1,5 +1,7 @@
-package model;
+package test;
 
+import model.Civilization;
+import model.Universe;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
