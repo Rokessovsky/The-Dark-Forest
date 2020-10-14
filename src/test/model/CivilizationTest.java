@@ -94,6 +94,19 @@ class CivilizationTest {
 
     @Test
     public void testAddTechnologyFull() {
+        earth.addResources(120);
+        for (int count = 1; count <= 100; count++) {
+            earth.addTechnology();
+        }
+
+        assertEquals(100, earth.getTechnology());
+        assertEquals(20, earth.getResources());
+
+        assertFalse(earth.addTechnology());
+    }
+
+    @Test
+    public void testAddTechnologyNoDPAndFull() {
         earth.addResources(100);
         for (int count = 1; count <= 100; count++) {
             earth.addTechnology();
@@ -103,14 +116,6 @@ class CivilizationTest {
         assertEquals(0, earth.getResources());
 
         assertFalse(earth.addTechnology());
-    }
-
-    @Test
-    public void testAddTechnologyNoDPAndFull() {
-        Civilization c = new Civilization("c",100,100,100,solar);
-
-        assertEquals(0,c.getResources());
-        assertFalse(c.addTechnology());
     }
 
     @Test
@@ -133,6 +138,20 @@ class CivilizationTest {
 
     @Test
     public void testAddSocietyFull() {
+        earth.addResources(120);
+        for (int count = 1; count <= 100; count++) {
+            earth.addSociety();
+        }
+
+        assertEquals(100, earth.getSociety());
+        assertEquals(20, earth.getResources());
+
+        assertFalse(earth.addSociety());
+    }
+
+    @Test
+    public void testAddSocietyNoDPAndFull() {
+
         earth.addResources(100);
         for (int count = 1; count <= 100; count++) {
             earth.addSociety();
@@ -142,15 +161,6 @@ class CivilizationTest {
         assertEquals(0, earth.getResources());
 
         assertFalse(earth.addSociety());
-    }
-
-    @Test
-    public void testAddSocietyNoDPAndFull() {
-
-        Civilization c = new Civilization("c",100,100,100,solar);
-        assertEquals(0,c.getResources());
-
-        assertFalse(c.addSociety());
     }
 
     @Test
@@ -173,6 +183,19 @@ class CivilizationTest {
 
     @Test
     public void testAddCultureFull() {
+        earth.addResources(120);
+        for (int count = 1; count <= 100; count++) {
+            earth.addCulture();
+        }
+
+        assertEquals(100, earth.getCulture());
+        assertEquals(20, earth.getResources());
+
+        assertFalse(earth.addCulture());
+    }
+
+    @Test
+    public void testAddCultureNoDPAndFull() {
         earth.addResources(100);
         for (int count = 1; count <= 100; count++) {
             earth.addCulture();
@@ -182,15 +205,6 @@ class CivilizationTest {
         assertEquals(0, earth.getResources());
 
         assertFalse(earth.addCulture());
-    }
-
-    @Test
-    public void testAddCultureNoDPAndFull() {
-
-        Civilization c = new Civilization("c",100,100,100,solar);
-
-        assertEquals(0,c.getResources());
-        assertFalse(c.addCulture());
     }
 
     @Test
