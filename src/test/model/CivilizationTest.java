@@ -35,17 +35,7 @@ class CivilizationTest {
         earth.setIsHarmful(false);
         assertFalse(earth.getIsHarmful());
 
-        earth.setHasInterCivilCommunication(true);
-        assertTrue(earth.getHasInterCivilCommunication());
 
-        earth.setHasStarFleet(true);
-        assertTrue(earth.getHasStarFleet());
-
-        earth.setDarkForestPrinciple(true);
-        assertTrue(earth.getHasDarkForestPrinciple());
-
-        earth.setLightSpeedTravel(true);
-        assertTrue(earth.getHasLightSpeedTravel());
 
         earth.setDevelopmentLimits(5);
         assertEquals(5,earth.getDevelopmentLimits());
@@ -86,8 +76,11 @@ class CivilizationTest {
         assertEquals(0, earth.getTechnology());
 
         earth.addResources(5);
-        earth.addTechnology();
-        earth.addTechnology();
+
+        assertTrue(earth.addTechnology());
+
+        assertTrue(earth.addTechnology());
+
 
 
         assertEquals(3, earth.getResources());
@@ -117,8 +110,8 @@ class CivilizationTest {
         assertEquals(0, earth.getSociety());
 
         earth.addResources(5);
-        earth.addSociety();
-        earth.addSociety();
+        assertTrue(earth.addSociety());
+        assertTrue(earth.addSociety());
 
 
         assertEquals(3, earth.getResources());
@@ -148,8 +141,8 @@ class CivilizationTest {
         assertEquals(0, earth.getCulture());
 
         earth.addResources(5);
-        earth.addCulture();
-        earth.addCulture();
+        assertTrue(earth.addCulture());
+        assertTrue(earth.addCulture());
 
 
         assertEquals(3, earth.getResources());
@@ -183,14 +176,6 @@ class CivilizationTest {
         assertTrue(earth.getIsExposed());
     }
 
-    @Test
-    public void testObtainDarkForestPrinciple() {
-        assertFalse(earth.getHasDarkForestPrinciple());
-
-        earth.obtainDarkForestPrinciple();
-
-        assertTrue(earth.getHasDarkForestPrinciple());
-    }
 
     @Test
     public void testMakeSafeStatement(){
@@ -201,15 +186,7 @@ class CivilizationTest {
         assertFalse(earth.getIsHarmful());
     }
 
-    @Test
-    public void testObtainLightSpeedTravel(){
-        assertFalse(earth.getHasLightSpeedTravel());
 
-        earth.obtainLightSpeedTravel();
-
-        assertTrue(earth.getHasLightSpeedTravel());
-
-    }
 
 
 

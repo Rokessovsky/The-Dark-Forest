@@ -4,6 +4,7 @@ import model.Civilization;
 import model.Universe;
 
 import java.nio.charset.Charset;
+import java.nio.charset.StandardCharsets;
 import java.util.Random;
 import java.util.Scanner;
 
@@ -174,7 +175,7 @@ public class UserApp {
             //create a random 5-byte-long name for other civilizations
             byte[] array = new byte[5];
             new Random().nextBytes(array);
-            String name = new String(array, Charset.forName("UTF_8"));
+            String name = new String(array, StandardCharsets.UTF_8);
 
             Civilization civilization = new Civilization(name,randomInt1,randomInt2,randomInt3, universe);
             universe.addCivilization(civilization);
@@ -284,6 +285,8 @@ public class UserApp {
         int num = input.nextInt();
         if (num == 1) {
             gameRoundEntry();
+        } else {
+            gameRoundEntry();
         }
     }
 
@@ -375,10 +378,10 @@ public class UserApp {
             System.out.println("Ooops,your society level is falling far behind your technology level.");
             System.out.println("You used too many resources to development technology and ignored the livelihood");
             System.out.println("of your people. Your people are angry and start a riot");
-            System.out.println("As a punishment, your resources will be deduced by 15");
+            System.out.println("As a punishment, your resources will be reduced by 10");
             System.out.println("-------------------------------------------------------------------------------------");
 
-            myCivilization.setResources(myCivilization.getResources() - 15);
+            myCivilization.setResources(myCivilization.getResources() - 10);
         }
     }
 
@@ -389,7 +392,7 @@ public class UserApp {
 
         Scanner input = new Scanner(System.in);
         resourcesWillGet = 12;
-        myCivilization.setHasInterCivilCommunication(true);
+
 
         System.out.println("Your civilization has developed to Level 1 Civilization");
         System.out.println("You now have ability to setup connections with other civilizations");
@@ -410,6 +413,8 @@ public class UserApp {
         int num = input.nextInt();
         if (num == 1) {
             gameRoundEntry();
+        } else {
+            gameRoundEntry();
         }
 
     }
@@ -417,7 +422,7 @@ public class UserApp {
     //EFFECTS: warn user about the dark forest principle
     public void darkForestWarning() {
         if (myCivilization.getSociety() >= myCivilization.getDarkForestKnownCulture()) {
-            myCivilization.setDarkForestPrinciple(true);
+
 
             System.out.println("-------------------------------------------------------------------------------------");
             System.out.println("WARNING!!!!!");
@@ -472,11 +477,11 @@ public class UserApp {
             invalidContact();
         } else if (enemy.getTechnology() >= enemy.getTechLevel2()
                 && enemy.getTechnology() < enemy.getTechLevel3()
-                && myCivilization.getHasDarkForestPrinciple()) {
+                && myCivilization.getCulture() >= myCivilization.getDarkForestKnownCulture()) {
             deterrenceSetUp();
         } else if (enemy.getTechnology() >= enemy.getTechLevel2()
                 && enemy.getTechnology() < enemy.getTechLevel3()
-                && !myCivilization.getHasDarkForestPrinciple()) {
+                && myCivilization.getCulture() < myCivilization.getDarkForestKnownCulture()) {
             destroyedByLevel2Civil();
         } else if (enemy.getTechnology() >= enemy.getTechLevel3()) {
             destroyedByStarPlucker();
@@ -546,7 +551,7 @@ public class UserApp {
     public void level2Civilization() {
         Scanner input = new Scanner(System.in);
         resourcesWillGet = 15;
-        myCivilization.setHasStarFleet(true);
+
 
         System.out.println("Your civilization has developed to Level 2 Civilization");
         System.out.println("You now have ability to attack other civilizations and occupy other civilization");
@@ -565,6 +570,8 @@ public class UserApp {
         System.out.println(">>>>press 1 to end this round");
         int num = input.nextInt();
         if (num == 1) {
+            gameRoundEntry();
+        } else {
             gameRoundEntry();
         }
 
@@ -688,7 +695,7 @@ public class UserApp {
         Scanner input2 = new Scanner(System.in);
 
         resourcesWillGet = 10;
-        myCivilization.setLightSpeedTravel(true);
+
 
         System.out.println("Your civilization has developed to Star Plucker Civilization");
         System.out.println("You now obtain the technology of curvature-drive.You can now easily eliminate any "

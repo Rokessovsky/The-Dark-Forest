@@ -20,10 +20,7 @@ public class Civilization {
 
     private boolean isExposed;
     private boolean isHarmful;
-    private boolean hasInterCivilCommunication;
-    private boolean hasStarFleet;
-    private boolean hasDarkForestPrinciple;
-    private boolean hasLightSpeedTravel;
+
 
     private int darkForestKnownCulture;
     private int matureSociety;
@@ -59,10 +56,7 @@ public class Civilization {
         techLevel3 = (developmentLimits / 4) * 3;
 
 
-        this.hasLightSpeedTravel = technology >= techLevel3 && society >= matureSociety;
-        this.hasDarkForestPrinciple = culture >= darkForestKnownCulture;
-        this.hasStarFleet = technology >= techLevel2;
-        this.hasInterCivilCommunication = technology >= techLevel1;
+
 
 
     }
@@ -120,17 +114,7 @@ public class Civilization {
         isExposed = true;
     }
 
-    //MODIFIES: this
-    //EFFECTS: the Dark Forest Principle is obtained by the civilization
-    public void obtainDarkForestPrinciple() {
-        hasDarkForestPrinciple = true;
-    }
 
-    //MODIFIES: this
-    //EFFECTS: the Light Speed Travel technology is obtained by the civilization
-    public void obtainLightSpeedTravel() {
-        hasLightSpeedTravel = true;
-    }
 
     //MODIFIES: this
     //EFFECTS: the civilization makes a Safe Statement to the rest of the universe
@@ -203,48 +187,7 @@ public class Civilization {
         this.isHarmful = i;
     }
 
-    //EFFECTS: get the value of hasStarFleet
-    public boolean getHasInterCivilCommunication() {
-        return hasInterCivilCommunication;
-    }
 
-    //EFFECTS : set the value of hasStarFleet
-    public void setHasInterCivilCommunication(boolean i) {
-        this.hasInterCivilCommunication = i;
-    }
-
-
-    //EFFECTS: get the value of hasSophons
-    public boolean getHasStarFleet() {
-        return hasStarFleet;
-    }
-
-    //EFFECTS : set the value of hasSophons
-    public void setHasStarFleet(boolean i) {
-        this.hasStarFleet = i;
-    }
-
-
-
-    //EFFECTS: get the value of hasDarkForestPrinciple
-    public boolean getHasDarkForestPrinciple() {
-        return hasDarkForestPrinciple;
-    }
-
-    //EFFECTS : set the value of hasDarkForestPrinciple
-    public void setDarkForestPrinciple(boolean i) {
-        this.hasDarkForestPrinciple = i;
-    }
-
-    //EFFECTS: get the value of hasLightSpeedTravel
-    public boolean getHasLightSpeedTravel() {
-        return hasLightSpeedTravel;
-    }
-
-    //EFFECTS : set the value of hasLightSpeedTravel
-    public void setLightSpeedTravel(boolean i) {
-        this.hasLightSpeedTravel = i;
-    }
 
     //EFFECTS: get techLevel1
     public int getTechLevel1() {
