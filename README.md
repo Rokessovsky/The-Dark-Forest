@@ -34,5 +34,7 @@ A *bulleted* list:
 - As a user, I want to be able to end one time unit after I've finished all my action.
 - As a user, I want be able to record how many time units I've survived after my civilization's been destroyed, and be 
   able to choose whether to start a new round of game or not.
+- As a user, I want to be able to choose to quit at the end of each round and store my current gaming process.
+- As a user, at the welcome panel, I want to have an option to reload my stored state of the gaming process.
   
 

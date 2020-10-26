@@ -13,8 +13,9 @@ class CivilizationTest {
 
     @BeforeEach
     public void setup() {
-        solar = new Universe(10);
+        solar = new Universe("solar",10);
         earth = new Civilization("earth", 0, 0, 0, solar);
+
     }
 
     @Test
@@ -62,6 +63,33 @@ class CivilizationTest {
 
         earth.setTechLevel3(5);
         assertEquals(5,earth.getTechLevel3());
+
+        Universe galaxy = new Universe("galaxy",8);
+        earth.setUniverse(galaxy);
+        assertEquals(galaxy,earth.getUniverse());
+
+        earth.setRoundNumber(28);
+        assertEquals(28,earth.getRoundNumber());
+
+    }
+
+
+    @Test
+    public void testAddRoundNumbersOnce() {
+        assertEquals(1,earth.getRoundNumber());
+
+        earth.addRoundNumber();
+        assertEquals(2,earth.getRoundNumber());
+    }
+
+    @Test
+    public void testAddRoundNumbersMultiples() {
+        assertEquals(1,earth.getRoundNumber());
+
+        for(int i = 0;i<10;i++) {
+            earth.addRoundNumber();
+        }
+        assertEquals(11,earth.getRoundNumber());
 
     }
 

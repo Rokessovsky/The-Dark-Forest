@@ -1,9 +1,12 @@
 package model;
 
+import org.json.JSONObject;
+
 //Represent a civilization with int technology, society and culture level,dimension,developLimit.And boolean value of
 //is exposed to university,has obtained Dark Forest Principle knowledge,light speed drive technology,is harmful.
 public class Civilization {
     private String name;
+    private Universe universe;
 
     private int technology;
     private int society;
@@ -28,6 +31,8 @@ public class Civilization {
     private int techLevel2;
     private int techLevel3;
 
+    private int roundNumber;
+
 
 
     //constructor
@@ -35,14 +40,14 @@ public class Civilization {
     //construct a civilization with certain technology,society and culture level.
     public Civilization(String name,int technology, int society, int culture,Universe universe) {
         this.name = name;
+        this.universe = universe;
 
         this.technology = technology;
         this.society = society;
         this.culture = culture;
 
         this.resources = 0;
-        //dimension
-
+        this.roundNumber = 1;
         this.isExposed = false;
         this.isHarmful = true;
 
@@ -59,6 +64,23 @@ public class Civilization {
 
 
 
+    }
+
+    //MODIFIES: JSON object
+    //EFFECTS: return a JSON object representing civilization with corresponding details
+    public JSONObject civilizationDetails() {
+        JSONObject cv = new JSONObject();
+
+        cv.put("Name of the civilization",name);
+        cv.put("Available resources", resources);
+        cv.put("Round number",roundNumber);
+        cv.put("Technology",technology);
+        cv.put("Society",society);
+        cv.put("Culture",culture);
+        cv.put("Universe",universe);
+
+
+        return cv;
     }
 
     //MODIFIES:this
@@ -109,6 +131,14 @@ public class Civilization {
     }
 
     //MODIFIES: this
+    //EFFECTS: add round number by 1
+    public void addRoundNumber() {
+        roundNumber++;
+    }
+
+
+
+    //MODIFIES: this
     //EFFECTS: expose the civilization to the rest of the universe
     public void expose() {
         isExposed = true;
@@ -122,11 +152,25 @@ public class Civilization {
         isHarmful = false;
     }
 
+    //EFFECTS: get the round number
+    public int getRoundNumber() {
+        return this.roundNumber;
+    }
+
+    //MODIFIES: this
+    //EFFECTS: set round number
+    public void setRoundNumber(int n) {
+        this.roundNumber = n;
+    }
+
+
+
     //EFFECTS: get the remaining development points
     public int getResources() {
         return resources;
     }
 
+    //MODIFIES: this
     //REQUIRES: num >= 0
     //EFFECTS : set the DevelopmentPoints
     public void setResources(int num) {
@@ -138,6 +182,7 @@ public class Civilization {
         return technology;
     }
 
+    //MODIFIES: this
     //REQUIRES: num >= 0
     //EFFECTS : set the technology level
     public void setTechnology(int num) {
@@ -149,6 +194,7 @@ public class Civilization {
         return society;
     }
 
+    //MODIFIES: this
     //REQUIRES: num >= 0
     //EFFECTS: set the society level
     public void setSociety(int num) {
@@ -160,6 +206,7 @@ public class Civilization {
         return culture;
     }
 
+    //MODIFIES: this
     //REQUIRES: num >= 0
     //EFFECTS: set the culture level
     public void setCulture(int num) {
@@ -172,6 +219,7 @@ public class Civilization {
         return isExposed;
     }
 
+    //MODIFIES: this
     //EFFECTS : set the value of isExposed
     public void setIsExposed(boolean i) {
         this.isExposed = i;
@@ -182,6 +230,7 @@ public class Civilization {
         return isHarmful;
     }
 
+    //MODIFIES: this
     //EFFECTS : set the value of isHarmful
     public void setIsHarmful(boolean i) {
         this.isHarmful = i;
@@ -194,6 +243,7 @@ public class Civilization {
         return techLevel1;
     }
 
+    //MODIFIES: this
     //REQUIRES: num >=0
     //EFFECTS: set techLevel1
     public void setTechLevel1(int num) {
@@ -205,6 +255,7 @@ public class Civilization {
         return techLevel2;
     }
 
+    //MODIFIES: this
     //REQUIRES: num >=0
     //EFFECTS: set techLevel2
     public void setTechLevel2(int num) {
@@ -216,6 +267,7 @@ public class Civilization {
         return techLevel3;
     }
 
+    //MODIFIES: this
     //REQUIRES: num >=0
     //EFFECTS: set techLevel3
     public void setTechLevel3(int num) {
@@ -227,6 +279,7 @@ public class Civilization {
         return dimension;
     }
 
+    //MODIFIES: this
     //REQUIRES: num >=0
     //EFFECTS: set dimension
     public void setDimension(int num) {
@@ -238,6 +291,7 @@ public class Civilization {
         return darkForestKnownCulture;
     }
 
+    //MODIFIES: this
     //REQUIRES: num >=0
     //EFFECTS: set darkForestKnownCulture
     public void setDarkForestKnownCulture(int num) {
@@ -249,6 +303,7 @@ public class Civilization {
         return matureSociety;
     }
 
+    //MODIFIES: this
     //REQUIRES: num >=0
     //EFFECTS: set matureSociety
     public void setMatureSociety(int num) {
@@ -264,6 +319,7 @@ public class Civilization {
         return developmentLimits;
     }
 
+    //MODIFIES: this
     //REQUIRES: num >= 0
     //EFFECTS: set development limits
     public void setDevelopmentLimits(int num) {
@@ -275,10 +331,23 @@ public class Civilization {
         return name;
     }
 
+    //MODIFIES: this
     //EFFECTS : set the name of the civilization
     public void setName(String name) {
         this.name = name;
     }
+
+    //EFFECTS: get the universe of the civilization
+    public Universe getUniverse() {
+        return universe;
+    }
+
+    //MODIFIES: this
+    //EFFECTS: set the universe of the civilization
+    public void setUniverse(Universe universe) {
+        this.universe = universe;
+    }
+
 
 
 }

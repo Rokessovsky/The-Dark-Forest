@@ -1,16 +1,40 @@
 package model;
 
+import org.json.JSONArray;
+import org.json.JSONObject;
+
 import java.util.ArrayList;
 import java.util.List;
 
 //present an universe with a dimension and a list civilizations
 public class Universe {
+    private String name;
     private int dimension;
     private ArrayList<Civilization> civilizations;
 
-    public Universe(int dimension) {
+    public Universe(String name,int dimension) {
+        this.name = name;
         this.dimension = dimension;
         civilizations = new ArrayList<>();
+    }
+
+    public JSONObject universeDetails() {
+        JSONObject uni = new JSONObject();
+        uni.put("name of universe",name);
+        uni.put("dimension",dimension);
+        uni.put("civilizations", cvsToJson());
+        return uni;
+    }
+
+    // EFFECTS: returns civilizations as a JSON array
+    private JSONArray cvsToJson() {
+        JSONArray jsonArray = new JSONArray();
+
+        for (Civilization cv : civilizations) {
+            jsonArray.put(cv.civilizationDetails());
+        }
+
+        return jsonArray;
     }
 
     //MODIFIES: this
@@ -58,6 +82,16 @@ public class Universe {
     //EFFECTS: set the dimension
     public void setDimension(int num) {
         this.dimension = num;
+    }
+
+    //EFFECTS: get the name of the universe
+    public String getName() {
+        return name;
+    }
+
+    //EFFECTS: set the name of the universe
+    public void setName(String s) {
+        this.name = s;
     }
 
 

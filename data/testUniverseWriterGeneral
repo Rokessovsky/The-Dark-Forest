@@ -1,0 +1,21 @@
+{
+    "civilizations": [
+        {
+            "Available resources": 88,
+            "Name of the civilization": "cv1",
+            "Technology": 5,
+            "Universe": "model.Universe@9660f4e",
+            "Society": 4,
+            "Culture": 3
+        },
+        {
+            "Available resources": 11,
+            "Name of the civilization": "cv2",
+            "Technology": 10,
+            "Universe": "model.Universe@9660f4e",
+            "Society": 3,
+            "Culture": 9
+        }
+    ],
+    "dimension": 10
+}

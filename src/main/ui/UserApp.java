@@ -2,16 +2,28 @@ package ui;
 
 import model.Civilization;
 import model.Universe;
+import persistence.CivilizationReader;
+import persistence.CivilizationWriter;
+import persistence.UniverseReader;
+import persistence.UniverseWriter;
 
+import java.io.IOException;
 import java.nio.charset.Charset;
 import java.nio.charset.StandardCharsets;
+import java.sql.SQLOutput;
 import java.util.Random;
 import java.util.Scanner;
 
 public class UserApp {
     private static final int UNIVERSE_STARTING_DIMENSION = 10;
+    private static final String CIVILIZATION_STORE = "./data/JsonMyCivilization";
+    private static final String UNIVERSE_STORE = "./data/JsonUniverse";
     private Civilization myCivilization;
     private Universe universe;
+    private CivilizationWriter cvWriter;
+    private CivilizationReader cvReader;
+    private UniverseWriter uniWriter;
+    private UniverseReader uniReader;
 
     private int roundNumber;
     private int resourcesWillGet;
@@ -25,22 +37,46 @@ public class UserApp {
         System.out.println("-----------------VERSION 1.0-----------------");
         System.out.println("----------------BY ROKESOVSKY----------------");
         System.out.println("Welcome to the strategy game THE DARK FOREST!!");
-        System.out.println("If you want to start a new game, press 1."
-                + "If you want to go through tutorial,press 2."
-                + "If you want to exit,press 3.");
+        System.out.println("\nSelect from : ");
+        System.out.println("\t1 -> Start a new game");
+        System.out.println("\t2 -> Load game");
+        System.out.println("\t3 -> Tutorial");
+        System.out.println("\t4 -> Exit");
         System.out.println("----------------------------------------------");
         int i = input.nextInt();
         if (i == 1) {
             newGame();
         } else if (i == 2) {
-            tutorial1();
+            loadGame();
         } else if (i == 3) {
+            tutorial1();
+        } else if (i == 4) {
             System.exit(0);
         }
 
 
 
     }
+
+    //MODIFIES: this
+    //EFFECTS: Load saved game
+    private void loadGame() {
+        try {
+            cvReader = new CivilizationReader(CIVILIZATION_STORE);
+            uniReader = new UniverseReader(UNIVERSE_STORE);
+
+            myCivilization = cvReader.read();
+            universe = uniReader.read();
+            roundNumber = myCivilization.getRoundNumber();
+            System.out.println("Loaded civilization " + myCivilization.getName() + " from " + CIVILIZATION_STORE + "and"
+                    + UNIVERSE_STORE);
+
+            gameRoundEntry();
+        } catch (IOException e) {
+            System.out.println("Unable to read from file: " + CIVILIZATION_STORE + "or" + UNIVERSE_STORE);
+        }
+    }
+
 
     //Start a tutorial,give a brief introduction of this game works
     public void tutorial1() {
@@ -142,11 +178,12 @@ public class UserApp {
 
     //EFFECTS: Start a new game
     public void newGame() {
-        universe = new Universe(UNIVERSE_STARTING_DIMENSION);
-        myCivilization = new Civilization("",0,0,0,universe);
         roundNumber = 1;
 
+        universe = new Universe("",UNIVERSE_STARTING_DIMENSION);
         customizeUniverse();
+
+        myCivilization = new Civilization("",0,0,0,universe);
         gameIntroAndSetName();
         gameRoundEntry();
     }
@@ -156,14 +193,28 @@ public class UserApp {
     //EFFECTS: let user to customize the structure of the universe(i.e customize the number and parameters of other
     //         civilizations.
     public void customizeUniverse() {
-        Scanner input = new Scanner(System.in);
+        Scanner input1 = new Scanner(System.in);
+        Scanner input2 = new Scanner(System.in);
 
 
-        System.out.println("You need to customize your universe.It's your choice to determine the numbers of other "
-                + "civilizations.");
+        System.out.println("You need to customize your universe.It's your choice to determine the name of universe and "
+                + "numbers of other civilizations.");
         System.out.println("-------------------------------------------------------------------------------------");
+        customizeName(input2);
+        customizeSize(input1);
+    }
+
+    public void customizeName(Scanner input2) {
+        System.out.println(">>>>Please type the name of the universe");
+        String name = input2.nextLine();
+        universe.setName(name);
+        System.out.println("-------------------------------------------------------------------------------------");
+    }
+
+    //EFFECTS: customize size of universe
+    public void customizeSize(Scanner input1) {
         System.out.println(">>>>Please type the number of the size of the universe down");
-        int num = input.nextInt();
+        int num = input1.nextInt();
         for (int i = 1;i <= num;i++) {
             int max = 100;
             int min = 0;
@@ -202,10 +253,42 @@ public class UserApp {
 
     //EFFECTS: the entry of each round of the game
     public void gameRoundEntry() {
+        Scanner input = new Scanner(System.in);
 
+        System.out.println(">>>>Press 1 to start next round, press 2 to exit and save game");
+        int num = input.nextInt();
+        if (num == 1) {
+            newRound();
+        } else if (num == 2) {
+            exitAndSave();
+        }
+
+        newRound();
+
+    }
+
+    public void exitAndSave() {
+        try {
+            cvWriter = new CivilizationWriter(CIVILIZATION_STORE);
+            uniWriter = new UniverseWriter(UNIVERSE_STORE);
+
+            cvWriter.open();
+            cvWriter.write(myCivilization);
+            cvWriter.close();
+
+            uniWriter.open();
+            uniWriter.write(universe);
+            uniWriter.close();
+
+            System.exit(0);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+    }
+
+    public void newRound() {
         otherCivilDevelopment();
-
-
         System.out.println("Your civilization: " + myCivilization.getName() + "||Technology: "
                 + myCivilization.getTechnology() + "||Society: " + myCivilization.getSociety() + "||Culture: "
                 + myCivilization.getCulture() + "||Resources: " + myCivilization.getResources()
@@ -224,7 +307,6 @@ public class UserApp {
         } else if (myCivilization.getTechnology() >= myCivilization.getTechLevel3()) {
             starPluckerCivilization();
         }
-
     }
 
     //EFFECTS: other civilizations develop
@@ -234,6 +316,7 @@ public class UserApp {
             i.addTechnology();
             i.addSociety();
             i.addCulture();
+            i.addRoundNumber();
         }
     }
 
@@ -279,6 +362,7 @@ public class UserApp {
         development(resourcesWillGet);
 
         roundNumber++;
+        myCivilization.addRoundNumber();
 
         System.out.println("------------------------------------------------------------");
         System.out.println(">>>>press 1 to end this round");
@@ -407,6 +491,7 @@ public class UserApp {
         development(resourcesWillGet);
 
         roundNumber++;
+        myCivilization.addRoundNumber();
 
         System.out.println("------------------------------------------------------------");
         System.out.println(">>>>press 1 to end this round");
@@ -565,6 +650,7 @@ public class UserApp {
         development(resourcesWillGet);
 
         roundNumber++;
+        myCivilization.addRoundNumber();
 
         System.out.println("------------------------------------------------------------");
         System.out.println(">>>>press 1 to end this round");
@@ -725,6 +811,7 @@ public class UserApp {
         development(resourcesWillGet);
 
         roundNumber++;
+        myCivilization.addRoundNumber();
 
         System.out.println("------------------------------------------------------------");
         System.out.println(">>>>press 1 to end this round");

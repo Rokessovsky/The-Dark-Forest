@@ -17,7 +17,7 @@ public class UniverseTest {
 
     @BeforeEach
     public void setup() {
-        galaxy = new Universe(10);
+        galaxy = new Universe("galaxy",10);
 
         earth = new Civilization("earth",2,2,2,galaxy);
         threeBody = new Civilization("Three Body",10,10,10,galaxy);
@@ -35,6 +35,9 @@ public class UniverseTest {
 
         galaxy.setDimension(5);
         assertEquals(5,galaxy.getDimension());
+
+        galaxy.setName("we");
+        assertEquals("we",galaxy.getName());
     }
 
     @Test
