@@ -307,6 +307,8 @@ public class UserApp {
         } else if (myCivilization.getTechnology() >= myCivilization.getTechLevel3()) {
             starPluckerCivilization();
         }
+
+
     }
 
     //EFFECTS: other civilizations develop
@@ -368,10 +370,18 @@ public class UserApp {
         System.out.println(">>>>press 1 to end this round");
         int num = input.nextInt();
         if (num == 1) {
+            roundEndConclusion();
             gameRoundEntry();
         } else {
+            roundEndConclusion();
             gameRoundEntry();
         }
+    }
+
+    public void roundEndConclusion() {
+        System.out.println("After development, your civilization: " + myCivilization.getName() + "||Technology: "
+                + myCivilization.getTechnology() + "||Society: " + myCivilization.getSociety() + "||Culture: "
+                + myCivilization.getCulture() + "||Remaining resources: " + myCivilization.getResources());
     }
 
     //EFFECTS: user will be assigned certain resources and user can decide how to distribute them
@@ -397,8 +407,10 @@ public class UserApp {
                 + myCivilization.getTechnology() + "||Society: " + myCivilization.getSociety() + "||Culture: "
                 + myCivilization.getCulture());
         int num3 = input3.nextInt();
+
         for (int i = 1; i <= num3; i++) {
             myCivilization.addCulture();
+
         }
     }
 
@@ -409,8 +421,11 @@ public class UserApp {
                 + myCivilization.getTechnology() + "||Society: " + myCivilization.getSociety() + "||Culture: "
                 + myCivilization.getCulture());
         int num2 = input2.nextInt();
+
+
         for (int i = 1; i <= num2; i++) {
             myCivilization.addSociety();
+
         }
     }
 
@@ -421,9 +436,12 @@ public class UserApp {
                 + myCivilization.getTechnology() + "||Society: " + myCivilization.getSociety() + "||Culture: "
                 + myCivilization.getCulture());
         int num1 = input1.nextInt();
+
+
         for (int i = 1; i <= num1; i++) {
             myCivilization.addTechnology();
         }
+
     }
 
     //EFFECTS: tech stagnate, society and culture fall back to the level of tech
@@ -497,8 +515,10 @@ public class UserApp {
         System.out.println(">>>>press 1 to end this round");
         int num = input.nextInt();
         if (num == 1) {
+            roundEndConclusion();
             gameRoundEntry();
         } else {
+            roundEndConclusion();
             gameRoundEntry();
         }
 
@@ -656,8 +676,10 @@ public class UserApp {
         System.out.println(">>>>press 1 to end this round");
         int num = input.nextInt();
         if (num == 1) {
+            roundEndConclusion();
             gameRoundEntry();
         } else {
+            roundEndConclusion();
             gameRoundEntry();
         }
 
@@ -817,6 +839,10 @@ public class UserApp {
         System.out.println(">>>>press 1 to end this round");
         int num = input2.nextInt();
         if (num == 1) {
+            roundEndConclusion();
+            gameRoundEntry();
+        } else {
+            roundEndConclusion();
             gameRoundEntry();
         }
     }

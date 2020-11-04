@@ -5,6 +5,7 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 //present an universe with a dimension and a list civilizations
 public class Universe {
@@ -12,12 +13,16 @@ public class Universe {
     private int dimension;
     private ArrayList<Civilization> civilizations;
 
+    //Constructor
+    //EFFECTS: construct a universe with given name and dimension
     public Universe(String name,int dimension) {
         this.name = name;
         this.dimension = dimension;
         civilizations = new ArrayList<>();
     }
 
+    //MODIFIES: json object.
+    //EFFECTS: return a json object with all universe details
     public JSONObject universeDetails() {
         JSONObject uni = new JSONObject();
         uni.put("name of universe",name);
@@ -94,8 +99,22 @@ public class Universe {
         this.name = s;
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+        Universe universe = (Universe) o;
+        return dimension == universe.dimension
+                && Objects.equals(name, universe.name)
+                && Objects.equals(civilizations, universe.civilizations);
+    }
 
-
-
-
+    @Override
+    public int hashCode() {
+        return Objects.hash(name, dimension, civilizations);
+    }
 }

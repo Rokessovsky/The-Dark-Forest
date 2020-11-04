@@ -1,8 +1,9 @@
 {
     "Available resources": 20,
     "Name of the civilization": "earth",
+    "Round number": 1,
     "Technology": 1,
-    "Universe": "model.Universe@7c29daf3",
+    "Universe": "model.Universe@86f6af17",
     "Society": 2,
     "Culture": 3
 }

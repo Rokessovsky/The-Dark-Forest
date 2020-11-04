@@ -1,18 +1,21 @@
 {
+    "name of universe": "solar",
     "civilizations": [
         {
             "Available resources": 88,
             "Name of the civilization": "cv1",
+            "Round number": 1,
             "Technology": 5,
-            "Universe": "model.Universe@9660f4e",
+            "Universe": "model.Universe@e344f3df",
             "Society": 4,
             "Culture": 3
         },
         {
             "Available resources": 11,
             "Name of the civilization": "cv2",
+            "Round number": 1,
             "Technology": 10,
-            "Universe": "model.Universe@9660f4e",
+            "Universe": "model.Universe@e344f3df",
             "Society": 3,
             "Culture": 9
         }

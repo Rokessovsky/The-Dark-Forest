@@ -2,6 +2,8 @@ package model;
 
 import org.json.JSONObject;
 
+import java.util.Objects;
+
 //Represent a civilization with int technology, society and culture level,dimension,developLimit.And boolean value of
 //is exposed to university,has obtained Dark Forest Principle knowledge,light speed drive technology,is harmful.
 public class Civilization {
@@ -348,6 +350,27 @@ public class Civilization {
         this.universe = universe;
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+        Civilization that = (Civilization) o;
+        return technology == that.technology
+                && society == that.society
+                && culture == that.culture
+                && resources == that.resources
+                && dimension == that.dimension
+                && roundNumber == that.roundNumber
+                && Objects.equals(name, that.name);
 
+    }
 
+    @Override
+    public int hashCode() {
+        return Objects.hash(name, technology, society, culture, resources, dimension, roundNumber);
+    }
 }
