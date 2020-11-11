@@ -7,14 +7,13 @@ import persistence.CivilizationWriter;
 import persistence.UniverseReader;
 import persistence.UniverseWriter;
 
+import javax.swing.*;
 import java.io.IOException;
-import java.nio.charset.Charset;
 import java.nio.charset.StandardCharsets;
-import java.sql.SQLOutput;
 import java.util.Random;
 import java.util.Scanner;
 
-public class UserApp {
+public class UserApp extends JFrame{
     private static final int UNIVERSE_STARTING_DIMENSION = 10;
     private static final String CIVILIZATION_STORE = "./data/JsonMyCivilization";
     private static final String UNIVERSE_STORE = "./data/JsonUniverse";
@@ -58,9 +57,10 @@ public class UserApp {
 
     }
 
+
     //MODIFIES: this
     //EFFECTS: Load saved game
-    private void loadGame() {
+    public void loadGame() {
         try {
             cvReader = new CivilizationReader(CIVILIZATION_STORE);
             uniReader = new UniverseReader(UNIVERSE_STORE);
@@ -80,7 +80,7 @@ public class UserApp {
 
     //Start a tutorial,give a brief introduction of this game works
     public void tutorial1() {
-        Scanner input = new Scanner(System.in);
+
 
 
         System.out.println("-------------------------------------------------------------------------------------");
@@ -88,17 +88,13 @@ public class UserApp {
         System.out.println("universe.The goal is to SURVIVE as long as possible. Your civilization has three factors");
         System.out.println("TECHNOLOGY,SOCIETY,CULTURE.You will be assigned resources to develop these three factors.");
         System.out.println("How you chose to distribute the resources will determine the future of your civilization");
-        System.out.println("-------------------------------------------------------------------------------------");
-        System.out.println(">>>>>>please press 1 to continue");
-        int num = input.nextInt();
-        if (num == 1) {
-            tutorial2();
-        }
+        promptEnter(">>>>>>please press \"Enter\" to continue");
+        tutorial2();
     }
 
     //EFFECTS: continue tutorial follows tutorial1
     public void tutorial2() {
-        Scanner input = new Scanner(System.in);
+
 
         System.out.println("-------------------------------------------------------------------------------------");
         System.out.println("TECHNOLOGY:");
@@ -107,19 +103,14 @@ public class UserApp {
         System.out.println("Civilization with lower technology level has slim chance of winning when encounter other");
         System.out.println("civilizations with higher technology level. Moreover, if the gap between your technology");
         System.out.println("and two other factors is too big, it will also negatively impact your civilization.");
-        System.out.println("-------------------------------------------------------------------------------------");
-        System.out.println(">>>>>>please press 1 to continue");
+        promptEnter(">>>>>>please press \"Enter\" to continue");
+        tutorial3();
 
-
-        int num = input.nextInt();
-        if (num == 1) {
-            tutorial3();
-        }
     }
 
     //EFFECTS: continue tutorial follows tutorial2
     public void tutorial3() {
-        Scanner input = new Scanner(System.in);
+
 
         System.out.println("-------------------------------------------------------------------------------------");
         System.out.println("SOCIETY:");
@@ -127,18 +118,13 @@ public class UserApp {
         System.out.println("development requires a stable society environment. If the gap between the society level");
         System.out.println("and technology level is too big,inner chaos or some other unpredictable result will occur");
         System.out.println("You will also want a mature society so that some advanced technology can be accepted.");
-        System.out.println("-------------------------------------------------------------------------------------");
-        System.out.println(">>>>>>please press 1 to continue");
-
-        int num = input.nextInt();
-        if (num == 1) {
-            tutorial4();
-        }
+        promptEnter(">>>>>>please press \"Enter\" to continue");
+        tutorial4();
     }
 
     //EFFECTS: continue tutorial follows tutorial3
     public void tutorial4() {
-        Scanner input = new Scanner(System.in);
+
 
         System.out.println("-------------------------------------------------------------------------------------");
         System.out.println("CULTURE");
@@ -146,18 +132,13 @@ public class UserApp {
         System.out.println("It's what make your civilization unique and colourful.It's also a crucial element for ");
         System.out.println("your civilization to realize the most important law in the universe which could help");
         System.out.println("you make wiser decision and increase the chance of survival.");
-        System.out.println("-------------------------------------------------------------------------------------");
-        System.out.println(">>>>>>please press 1 to continue");
-
-        int num = input.nextInt();
-        if (num == 1) {
-            tutorial5();
-        }
+        promptEnter(">>>>>>please press \"Enter\" to continue");
+        tutorial5();
     }
 
     //EFFECTS: continue tutorial follows tutorial4
     public void tutorial5() {
-        Scanner input = new Scanner(System.in);
+
 
         System.out.println("-------------------------------------------------------------------------------------");
         System.out.println("In this game, your civilization will be putted into a universe alongside with other");
@@ -165,14 +146,17 @@ public class UserApp {
         System.out.println("technology. After that level, you might encounter other civilizations and start a war");
         System.out.println("The goal is to eliminate all the threats and keep your civilization alive as long as ");
         System.out.println("possible. Have fun!");
+        promptEnter(">>>>>>please press \"Enter\" to end tutorial");
+        welcomePanel();
+
+    }
+
+    public void promptEnter(String s) {
         System.out.println("-------------------------------------------------------------------------------------");
-        System.out.println(">>>>>>please press 1 to end tutorial");
+        System.out.println(s);
 
-        int num = input.nextInt();
-        if (num == 1) {
-            welcomePanel();
-        }
-
+        Scanner input = new Scanner(System.in);
+        input.nextLine();
     }
 
 
@@ -326,7 +310,7 @@ public class UserApp {
 
     //EFFECTS: the user's civilization eliminates all other civilizations and win.
     public void winCondition1() {
-        Scanner input = new Scanner(System.in);
+
 
         System.out.println("Congratulation!You've successfully eliminated all"
                 + universe.getCivilizations().size() + "\n civilizations in the universe");
@@ -341,19 +325,14 @@ public class UserApp {
         System.out.println("Yet it's impossible for this kind of winning to happen in real life as there're too many"
                 + "super-civilizations out there.");
         System.out.println("Someone will definitely locate earth someday and eliminate this thread...");
-        System.out.println("-------------------------------------------------------------------------------------");
-        System.out.println(">>>>press 1 to return to the welcome panel");
-
-        int num = input.nextInt();
-        if (num == 1) {
-            welcomePanel();
-        }
+        promptEnter("Press \"Enter\" to return to welcome panel");
+        welcomePanel();
 
     }
 
     //EFFECTS: the game process for primitive civilization
     public void primitiveCivilization() {
-        Scanner input = new Scanner(System.in);
+
         resourcesWillGet = 15;
 
 
@@ -366,16 +345,9 @@ public class UserApp {
         roundNumber++;
         myCivilization.addRoundNumber();
 
-        System.out.println("------------------------------------------------------------");
-        System.out.println(">>>>press 1 to end this round");
-        int num = input.nextInt();
-        if (num == 1) {
-            roundEndConclusion();
-            gameRoundEntry();
-        } else {
-            roundEndConclusion();
-            gameRoundEntry();
-        }
+        promptEnter(">>>>>>please press \"Enter\" to end this round");
+        roundEndConclusion();
+        gameRoundEntry();
     }
 
     public void roundEndConclusion() {
@@ -391,10 +363,13 @@ public class UserApp {
         Scanner input2 = new Scanner(System.in);
         Scanner input3 = new Scanner(System.in);
 
-        myCivilization.addResources(d);
-
-        System.out.println("You obtain " + d + " resources, please distribute "
-                + "them wisely");
+        if (myCivilization.getResources() < resourcesWillGet) {
+            myCivilization.addResources(d);
+            System.out.println("You obtain " + d + " resources, please distribute "
+                    + "them wisely");
+        } else {
+            System.out.println("You have too many resources left, use them before you can obtain more!!!!!");
+        }
 
         teachDevelop(input1);
         societyDevelop(input2);
@@ -492,7 +467,7 @@ public class UserApp {
     //EFFECTS:game process for level 1 civilization
     public void level1Civilization() {
 
-        Scanner input = new Scanner(System.in);
+        
         resourcesWillGet = 12;
 
 
@@ -511,16 +486,9 @@ public class UserApp {
         roundNumber++;
         myCivilization.addRoundNumber();
 
-        System.out.println("------------------------------------------------------------");
-        System.out.println(">>>>press 1 to end this round");
-        int num = input.nextInt();
-        if (num == 1) {
-            roundEndConclusion();
-            gameRoundEntry();
-        } else {
-            roundEndConclusion();
-            gameRoundEntry();
-        }
+        promptEnter(">>>>>>please press \"Enter\" to end this round");
+        roundEndConclusion();
+        gameRoundEntry();
 
     }
 
@@ -639,12 +607,8 @@ public class UserApp {
         System.out.println("The game is end, your civilization " + myCivilization.getName()
                 + " has survived for " + roundNumber + " rounds");
         System.out.println("-----------------------------------------------------------------");
-        System.out.println(">>>>please press 1 to return to welcome panel");
-
-        int num = input.nextInt();
-        if (num == 1) {
-            welcomePanel();
-        }
+        promptEnter(">>>>>>please press \"Enter\" to return to the welcome panel");
+        welcomePanel();
 
     }
 
@@ -672,16 +636,9 @@ public class UserApp {
         roundNumber++;
         myCivilization.addRoundNumber();
 
-        System.out.println("------------------------------------------------------------");
-        System.out.println(">>>>press 1 to end this round");
-        int num = input.nextInt();
-        if (num == 1) {
-            roundEndConclusion();
-            gameRoundEntry();
-        } else {
-            roundEndConclusion();
-            gameRoundEntry();
-        }
+        promptEnter(">>>>>>please press \"Enter\" to end this round");
+        roundEndConclusion();
+        gameRoundEntry();
 
     }
 
@@ -800,7 +757,7 @@ public class UserApp {
     //EFFECTS: game process of Star Plucker civilization
     public void starPluckerCivilization() {
         Scanner input1 = new Scanner(System.in);
-        Scanner input2 = new Scanner(System.in);
+
 
         resourcesWillGet = 10;
 
@@ -817,12 +774,12 @@ public class UserApp {
         if (n1 == 1) {
             universeSafeStatement();
         } else if (n1 == 2) {
-            starPluckerContinuePlay(input2);
+            starPluckerContinuePlay();
         }
 
     }
 
-    public void starPluckerContinuePlay(Scanner input2) {
+    public void starPluckerContinuePlay() {
         starPluckerProactiveContact();
 
         starPluckerSelfExpose();
@@ -835,16 +792,9 @@ public class UserApp {
         roundNumber++;
         myCivilization.addRoundNumber();
 
-        System.out.println("------------------------------------------------------------");
-        System.out.println(">>>>press 1 to end this round");
-        int num = input2.nextInt();
-        if (num == 1) {
-            roundEndConclusion();
-            gameRoundEntry();
-        } else {
-            roundEndConclusion();
-            gameRoundEntry();
-        }
+        promptEnter(">>>>>>please press \"Enter\" to end this round");
+        roundEndConclusion();
+        gameRoundEntry();
     }
 
     //EFFECTS: civilization makes a safe statement
@@ -862,7 +812,7 @@ public class UserApp {
         System.out.println("However,this is not exactly a bad thing. Your civilization survives until the end of"
                 + " universe.Your people peacefully live their lives forever......");
 
-        roundNumber = 99999;
+        roundNumber = 999999;
         endGame();
 
     }
