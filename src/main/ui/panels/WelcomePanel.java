@@ -13,9 +13,10 @@ import java.util.List;
 
 //Represent the welcome panel
 public class WelcomePanel extends Panel {
+    private static final String FILE_NAME = "./data/evgeniy-kiselov-dark-forest-wallpapers-12.jpg";
     private UserApp app;
 
-    private List<JButton> buttons;
+    private List<JButton> backBts;
     private JButton playMusic;
 
     private JLabel citation;
@@ -28,11 +29,11 @@ public class WelcomePanel extends Panel {
     public WelcomePanel(UserApp app, Civilization myCivil, Universe universe) {
         super(app, myCivil, universe);
         this.app = app;
-        this.buttons = new ArrayList<>();
+        this.backBts = new ArrayList<>();
 
         setAlignmentX(Component.RIGHT_ALIGNMENT);
         setAlignmentY(Component.TOP_ALIGNMENT);
-        setPreferredSize(new Dimension(1200,741));
+        setPreferredSize(new Dimension(1200,742));
         setVisible(true);
 
         initialiseContents();
@@ -43,7 +44,8 @@ public class WelcomePanel extends Panel {
 
     }
 
-
+    //MODIFIES: this
+    //EFFECTS: initialise elements
     @Override
     protected void initialiseContents() {
 
@@ -53,10 +55,10 @@ public class WelcomePanel extends Panel {
         buttons.add(bt1);
         JButton bt2 = new JButton("TUTORIAL");
         buttons.add(bt2);
-        JButton bt3 = new JButton("EXIT");
+        JButton bt3 = new JButton("EXIT AND SAVE");
         buttons.add(bt3);
 
-        citation = new JLabel("--inspired by Liu CiXi's Three Body Problem series--");
+        citation = new JLabel("--inspired by Liu CiXin's Three Body Problem series--");
         citation.setFont(new Font("MonoSpaced",Font.BOLD,20));
         citation.setForeground(Color.white);
 
@@ -68,7 +70,7 @@ public class WelcomePanel extends Panel {
     //EFFECTS: initialise BackToMainMenu buttons
     private void initialiseButtons() {
         for (int i = 0; i < panels.size(); i++) {
-            buttons.get(i).addActionListener(new Navigator(app,panels.get(i),this));
+            backBts.get(i).addActionListener(new Navigator(app,panels.get(i),this));
         }
     }
 
@@ -80,20 +82,25 @@ public class WelcomePanel extends Panel {
         panels.add(new PrimitiveCivilizationPanel(app,myCivil,universe));
         panels.add(new Level1CivilizationPanel(app,myCivil,universe));
         panels.add(new Level2CivilizationPanel(app,myCivil,universe));
-        panels.add(new Level3CivilizationPanel(app,myCivil,universe));
+        panels.add(new StarPluckerCivilizationPanel(app,myCivil,universe));
+
 
         GridBagConstraints gbc = new GridBagConstraints();
-        gbc.insets = new Insets(5,5,5,5);
-        gbc.fill = GridBagConstraints.BOTH;
+        gbc.insets = new Insets(3,3,10,3);
+        gbc.fill = GridBagConstraints.NONE;
         gbc.anchor = GridBagConstraints.PAGE_END;
+        gbc.gridx = 3;
+        gbc.gridy = 6;
 
         for (Panel p: panels) {
             JButton backToMain = new JButton("BACK TO MAIN MENU");
-            buttons.add(backToMain);
+            backBts.add(backToMain);
             p.add(backToMain,gbc);
         }
     }
 
+    //MODIFIES: panel
+    //EFFECTS: add elements to panel
     @Override
     protected void addToPanel() {
         gridBagConstraints = new GridBagConstraints();
@@ -112,6 +119,7 @@ public class WelcomePanel extends Panel {
 
     }
 
+    //EFFECTS: initialise interaction when button is pressed
     @Override
     protected void initialiseInteraction() {
 
@@ -125,7 +133,24 @@ public class WelcomePanel extends Panel {
         buttons.get(2).addActionListener(new Navigator(app,this,panels.get(1)));
 
         //Exit -> exit
-        buttons.get(3).addActionListener(e -> System.exit(0));
+        buttons.get(3).addActionListener(e -> app.exitAndSave());
+
+    }
+
+    //EFFECTS: update components on panel when needed
+    @Override
+    public void updatePanel() {
+        //
+    }
+
+    //MODIFIES: this
+    //EFFECTS; set the background picture of the welcome panel.
+    @Override
+    public void paintComponent(Graphics g) {
+        super.paintComponent(g);
+        ImageIcon image = new ImageIcon(FILE_NAME);
+        setBounds(0,0,1200,742);
+        image.paintIcon(this,g,0,0);
 
     }
 

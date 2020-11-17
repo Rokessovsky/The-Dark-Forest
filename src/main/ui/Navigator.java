@@ -22,10 +22,10 @@ public class Navigator implements ActionListener {
 
 
 
-
+    //EFFECT: action of the navigator
     @Override
     public void actionPerformed(ActionEvent e) {
-        nextPanel.updatePanel();
+        
         nextPanel.setVisible(true);
         app.setContentPane(nextPanel);
         thisPanel.setVisible(false);

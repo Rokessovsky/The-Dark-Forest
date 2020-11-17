@@ -1,833 +1,212 @@
 {
-    "name of universe": "wed",
+    "name of universe": "fd",
     "civilizations": [
         {
             "Available resources": 0,
-            "Name of the civilization": ")�1�\u001b",
-            "Round number": 2,
-            "Technology": 1,
-            "Universe": "model.Universe@266474c2",
-            "Society": 33,
-            "Culture": 30
+            "Name of the civilization": "BP���",
+            "Round number": 1,
+            "Technology": 74,
+            "Universe": "model.Universe@8570f433",
+            "Society": 19,
+            "Culture": 34
         },
         {
             "Available resources": 0,
-            "Name of the civilization": "\n\\'`x",
-            "Round number": 2,
-            "Technology": 2,
-            "Universe": "model.Universe@266474c2",
-            "Society": 28,
-            "Culture": 47
-        },
-        {
-            "Available resources": 0,
-            "Name of the civilization": "\u0000\u0016yf�",
-            "Round number": 2,
-            "Technology": 21,
-            "Universe": "model.Universe@266474c2",
-            "Society": 38,
-            "Culture": 74
-        },
-        {
-            "Available resources": 0,
-            "Name of the civilization": "\u0018ʿ=�",
-            "Round number": 2,
-            "Technology": 72,
-            "Universe": "model.Universe@266474c2",
-            "Society": 97,
-            "Culture": 84
-        },
-        {
-            "Available resources": 0,
-            "Name of the civilization": "m��Y�",
-            "Round number": 2,
-            "Technology": 77,
-            "Universe": "model.Universe@266474c2",
-            "Society": 2,
-            "Culture": 26
-        },
-        {
-            "Available resources": 0,
-            "Name of the civilization": "(˦��",
-            "Round number": 2,
-            "Technology": 89,
-            "Universe": "model.Universe@266474c2",
-            "Society": 6,
-            "Culture": 7
-        },
-        {
-            "Available resources": 0,
-            "Name of the civilization": "V�<ٔ",
-            "Round number": 2,
-            "Technology": 12,
-            "Universe": "model.Universe@266474c2",
-            "Society": 94,
-            "Culture": 95
-        },
-        {
-            "Available resources": 0,
-            "Name of the civilization": "\u0002�+��",
-            "Round number": 2,
-            "Technology": 87,
-            "Universe": "model.Universe@266474c2",
-            "Society": 74,
-            "Culture": 42
-        },
-        {
-            "Available resources": 0,
-            "Name of the civilization": "\u0012�\u0018��",
-            "Round number": 2,
-            "Technology": 73,
-            "Universe": "model.Universe@266474c2",
-            "Society": 67,
-            "Culture": 18
-        },
-        {
-            "Available resources": 0,
-            "Name of the civilization": "�b\u0007��",
-            "Round number": 2,
-            "Technology": 43,
-            "Universe": "model.Universe@266474c2",
-            "Society": 98,
-            "Culture": 63
-        },
-        {
-            "Available resources": 0,
-            "Name of the civilization": "D��\u0081",
-            "Round number": 2,
-            "Technology": 10,
-            "Universe": "model.Universe@266474c2",
-            "Society": 56,
-            "Culture": 47
-        },
-        {
-            "Available resources": 0,
-            "Name of the civilization": "n�\u0003\u0018",
-            "Round number": 2,
-            "Technology": 19,
-            "Universe": "model.Universe@266474c2",
-            "Society": 50,
-            "Culture": 21
-        },
-        {
-            "Available resources": 0,
-            "Name of the civilization": "�P\u0015�t",
-            "Round number": 2,
-            "Technology": 28,
-            "Universe": "model.Universe@266474c2",
-            "Society": 80,
-            "Culture": 13
-        },
-        {
-            "Available resources": 0,
-            "Name of the civilization": "o�P\u001b�",
-            "Round number": 2,
-            "Technology": 75,
-            "Universe": "model.Universe@266474c2",
-            "Society": 62,
-            "Culture": 38
-        },
-        {
-            "Available resources": 0,
-            "Name of the civilization": "�eF��",
-            "Round number": 2,
-            "Technology": 67,
-            "Universe": "model.Universe@266474c2",
-            "Society": 28,
-            "Culture": 32
-        },
-        {
-            "Available resources": 0,
-            "Name of the civilization": "屑�A",
-            "Round number": 2,
-            "Technology": 65,
-            "Universe": "model.Universe@266474c2",
-            "Society": 50,
-            "Culture": 25
-        },
-        {
-            "Available resources": 1,
-            "Name of the civilization": "$*�;U",
-            "Round number": 2,
-            "Technology": 61,
-            "Universe": "model.Universe@266474c2",
-            "Society": 100,
-            "Culture": 51
-        },
-        {
-            "Available resources": 0,
-            "Name of the civilization": "ʎ\u0002�O",
-            "Round number": 2,
-            "Technology": 33,
-            "Universe": "model.Universe@266474c2",
-            "Society": 74,
-            "Culture": 78
-        },
-        {
-            "Available resources": 0,
-            "Name of the civilization": "i]��S",
-            "Round number": 2,
-            "Technology": 27,
-            "Universe": "model.Universe@266474c2",
-            "Society": 63,
-            "Culture": 19
-        },
-        {
-            "Available resources": 0,
-            "Name of the civilization": "R��R9",
-            "Round number": 2,
-            "Technology": 15,
-            "Universe": "model.Universe@266474c2",
-            "Society": 20,
-            "Culture": 65
-        },
-        {
-            "Available resources": 0,
-            "Name of the civilization": "�/C�3",
-            "Round number": 2,
-            "Technology": 77,
-            "Universe": "model.Universe@266474c2",
-            "Society": 23,
-            "Culture": 85
-        },
-        {
-            "Available resources": 0,
-            "Name of the civilization": "�e\u0005\n�",
-            "Round number": 2,
-            "Technology": 91,
-            "Universe": "model.Universe@266474c2",
-            "Society": 60,
-            "Culture": 16
-        },
-        {
-            "Available resources": 0,
-            "Name of the civilization": "�3洛",
-            "Round number": 2,
-            "Technology": 19,
-            "Universe": "model.Universe@266474c2",
-            "Society": 67,
-            "Culture": 15
-        },
-        {
-            "Available resources": 0,
-            "Name of the civilization": "\u0013��n�",
-            "Round number": 2,
-            "Technology": 80,
-            "Universe": "model.Universe@266474c2",
-            "Society": 6,
-            "Culture": 86
-        },
-        {
-            "Available resources": 0,
-            "Name of the civilization": "0ykh0",
-            "Round number": 2,
-            "Technology": 83,
-            "Universe": "model.Universe@266474c2",
-            "Society": 58,
-            "Culture": 84
-        },
-        {
-            "Available resources": 0,
-            "Name of the civilization": "��$`\"",
-            "Round number": 2,
-            "Technology": 67,
-            "Universe": "model.Universe@266474c2",
-            "Society": 99,
-            "Culture": 93
-        },
-        {
-            "Available resources": 0,
-            "Name of the civilization": "yj\u0011wO",
-            "Round number": 2,
-            "Technology": 67,
-            "Universe": "model.Universe@266474c2",
-            "Society": 12,
-            "Culture": 74
-        },
-        {
-            "Available resources": 0,
-            "Name of the civilization": "l�RD�",
-            "Round number": 2,
-            "Technology": 3,
-            "Universe": "model.Universe@266474c2",
-            "Society": 92,
-            "Culture": 50
-        },
-        {
-            "Available resources": 0,
-            "Name of the civilization": "��kel",
-            "Round number": 2,
-            "Technology": 30,
-            "Universe": "model.Universe@266474c2",
-            "Society": 21,
-            "Culture": 20
-        },
-        {
-            "Available resources": 0,
-            "Name of the civilization": "i���\u001e",
-            "Round number": 2,
-            "Technology": 6,
-            "Universe": "model.Universe@266474c2",
-            "Society": 89,
+            "Name of the civilization": "B��v>",
+            "Round number": 1,
+            "Technology": 46,
+            "Universe": "model.Universe@8570f433",
+            "Society": 66,
             "Culture": 90
         },
         {
             "Available resources": 0,
-            "Name of the civilization": "琙��",
-            "Round number": 2,
-            "Technology": 36,
-            "Universe": "model.Universe@266474c2",
-            "Society": 45,
-            "Culture": 32
-        },
-        {
-            "Available resources": 0,
-            "Name of the civilization": "��O\t�",
-            "Round number": 2,
-            "Technology": 59,
-            "Universe": "model.Universe@266474c2",
-            "Society": 3,
-            "Culture": 64
-        },
-        {
-            "Available resources": 0,
-            "Name of the civilization": "���{M",
-            "Round number": 2,
-            "Technology": 97,
-            "Universe": "model.Universe@266474c2",
-            "Society": 8,
-            "Culture": 99
-        },
-        {
-            "Available resources": 0,
-            "Name of the civilization": "\u0003�lc�",
-            "Round number": 2,
-            "Technology": 40,
-            "Universe": "model.Universe@266474c2",
-            "Society": 56,
-            "Culture": 62
-        },
-        {
-            "Available resources": 0,
-            "Name of the civilization": "N��\u0017�",
-            "Round number": 2,
-            "Technology": 24,
-            "Universe": "model.Universe@266474c2",
-            "Society": 60,
-            "Culture": 46
-        },
-        {
-            "Available resources": 0,
-            "Name of the civilization": "����{",
-            "Round number": 2,
-            "Technology": 50,
-            "Universe": "model.Universe@266474c2",
-            "Society": 4,
-            "Culture": 3
-        },
-        {
-            "Available resources": 0,
-            "Name of the civilization": "\u0007\u0013gQR",
-            "Round number": 2,
-            "Technology": 33,
-            "Universe": "model.Universe@266474c2",
-            "Society": 46,
-            "Culture": 35
-        },
-        {
-            "Available resources": 0,
-            "Name of the civilization": "�\u0011��|",
-            "Round number": 2,
-            "Technology": 82,
-            "Universe": "model.Universe@266474c2",
-            "Society": 91,
-            "Culture": 73
-        },
-        {
-            "Available resources": 0,
-            "Name of the civilization": "��XR�",
-            "Round number": 2,
-            "Technology": 78,
-            "Universe": "model.Universe@266474c2",
-            "Society": 78,
-            "Culture": 31
-        },
-        {
-            "Available resources": 0,
-            "Name of the civilization": "����\u001f",
-            "Round number": 2,
-            "Technology": 43,
-            "Universe": "model.Universe@266474c2",
-            "Society": 35,
-            "Culture": 66
-        },
-        {
-            "Available resources": 0,
-            "Name of the civilization": "\u0004Ȏ��",
-            "Round number": 2,
-            "Technology": 80,
-            "Universe": "model.Universe@266474c2",
-            "Society": 24,
-            "Culture": 38
-        },
-        {
-            "Available resources": 0,
-            "Name of the civilization": "X;�Q\u001f",
-            "Round number": 2,
-            "Technology": 58,
-            "Universe": "model.Universe@266474c2",
-            "Society": 18,
-            "Culture": 28
-        },
-        {
-            "Available resources": 0,
-            "Name of the civilization": "A�O\u001aN",
-            "Round number": 2,
-            "Technology": 27,
-            "Universe": "model.Universe@266474c2",
-            "Society": 49,
-            "Culture": 99
-        },
-        {
-            "Available resources": 0,
-            "Name of the civilization": "��~�",
-            "Round number": 2,
-            "Technology": 11,
-            "Universe": "model.Universe@266474c2",
-            "Society": 6,
-            "Culture": 91
-        },
-        {
-            "Available resources": 0,
-            "Name of the civilization": "_�_��",
-            "Round number": 2,
-            "Technology": 52,
-            "Universe": "model.Universe@266474c2",
-            "Society": 55,
-            "Culture": 40
-        },
-        {
-            "Available resources": 1,
-            "Name of the civilization": "��,N�",
-            "Round number": 2,
-            "Technology": 100,
-            "Universe": "model.Universe@266474c2",
-            "Society": 21,
-            "Culture": 92
-        },
-        {
-            "Available resources": 0,
-            "Name of the civilization": "��\u0003�",
-            "Round number": 2,
-            "Technology": 9,
-            "Universe": "model.Universe@266474c2",
-            "Society": 38,
-            "Culture": 50
-        },
-        {
-            "Available resources": 0,
-            "Name of the civilization": "�%;�",
-            "Round number": 2,
-            "Technology": 64,
-            "Universe": "model.Universe@266474c2",
-            "Society": 100,
-            "Culture": 72
-        },
-        {
-            "Available resources": 0,
-            "Name of the civilization": "�ͤ",
-            "Round number": 2,
-            "Technology": 10,
-            "Universe": "model.Universe@266474c2",
-            "Society": 47,
-            "Culture": 97
-        },
-        {
-            "Available resources": 1,
-            "Name of the civilization": "�R��S",
-            "Round number": 2,
-            "Technology": 2,
-            "Universe": "model.Universe@266474c2",
-            "Society": 100,
-            "Culture": 53
-        },
-        {
-            "Available resources": 0,
-            "Name of the civilization": "�^�i�",
-            "Round number": 2,
-            "Technology": 74,
-            "Universe": "model.Universe@266474c2",
+            "Name of the civilization": "w�K��",
+            "Round number": 1,
+            "Technology": 23,
+            "Universe": "model.Universe@8570f433",
             "Society": 92,
-            "Culture": 70
+            "Culture": 80
         },
         {
             "Available resources": 0,
-            "Name of the civilization": "\u0006��.B",
-            "Round number": 2,
-            "Technology": 48,
-            "Universe": "model.Universe@266474c2",
-            "Society": 13,
-            "Culture": 10
+            "Name of the civilization": "B֎(\u0015",
+            "Round number": 1,
+            "Technology": 91,
+            "Universe": "model.Universe@8570f433",
+            "Society": 73,
+            "Culture": 15
         },
         {
             "Available resources": 0,
-            "Name of the civilization": "��ꋤ",
-            "Round number": 2,
-            "Technology": 22,
-            "Universe": "model.Universe@266474c2",
-            "Society": 17,
-            "Culture": 69
-        },
-        {
-            "Available resources": 0,
-            "Name of the civilization": "}\u0003\u0015��",
-            "Round number": 2,
-            "Technology": 98,
-            "Universe": "model.Universe@266474c2",
-            "Society": 39,
+            "Name of the civilization": "E�ʼ3",
+            "Round number": 1,
+            "Technology": 20,
+            "Universe": "model.Universe@8570f433",
+            "Society": 1,
             "Culture": 33
         },
         {
             "Available resources": 0,
-            "Name of the civilization": "k}N�\u0016",
-            "Round number": 2,
-            "Technology": 100,
-            "Universe": "model.Universe@266474c2",
-            "Society": 89,
-            "Culture": 91
-        },
-        {
-            "Available resources": 0,
-            "Name of the civilization": "\u0006ߣ��",
-            "Round number": 2,
-            "Technology": 99,
-            "Universe": "model.Universe@266474c2",
-            "Society": 23,
-            "Culture": 71
-        },
-        {
-            "Available resources": 0,
-            "Name of the civilization": "h����",
-            "Round number": 2,
-            "Technology": 88,
-            "Universe": "model.Universe@266474c2",
-            "Society": 48,
-            "Culture": 96
-        },
-        {
-            "Available resources": 0,
-            "Name of the civilization": "'����",
-            "Round number": 2,
-            "Technology": 90,
-            "Universe": "model.Universe@266474c2",
-            "Society": 79,
-            "Culture": 16
-        },
-        {
-            "Available resources": 0,
-            "Name of the civilization": "\u001e��'�",
-            "Round number": 2,
-            "Technology": 32,
-            "Universe": "model.Universe@266474c2",
-            "Society": 24,
-            "Culture": 48
-        },
-        {
-            "Available resources": 0,
-            "Name of the civilization": "�?[O�",
-            "Round number": 2,
-            "Technology": 29,
-            "Universe": "model.Universe@266474c2",
-            "Society": 80,
-            "Culture": 47
-        },
-        {
-            "Available resources": 0,
-            "Name of the civilization": "�[!e�",
-            "Round number": 2,
-            "Technology": 84,
-            "Universe": "model.Universe@266474c2",
-            "Society": 49,
-            "Culture": 10
-        },
-        {
-            "Available resources": 0,
-            "Name of the civilization": "��C`",
-            "Round number": 2,
-            "Technology": 52,
-            "Universe": "model.Universe@266474c2",
-            "Society": 83,
-            "Culture": 21
-        },
-        {
-            "Available resources": 0,
-            "Name of the civilization": "\u0017�i��",
-            "Round number": 2,
-            "Technology": 75,
-            "Universe": "model.Universe@266474c2",
-            "Society": 71,
-            "Culture": 37
-        },
-        {
-            "Available resources": 0,
-            "Name of the civilization": "���\u001c]",
-            "Round number": 2,
-            "Technology": 98,
-            "Universe": "model.Universe@266474c2",
-            "Society": 56,
-            "Culture": 51
-        },
-        {
-            "Available resources": 0,
-            "Name of the civilization": "z�\u0004�",
-            "Round number": 2,
-            "Technology": 95,
-            "Universe": "model.Universe@266474c2",
-            "Society": 68,
-            "Culture": 92
-        },
-        {
-            "Available resources": 0,
-            "Name of the civilization": "w�\bDX",
-            "Round number": 2,
-            "Technology": 9,
-            "Universe": "model.Universe@266474c2",
-            "Society": 23,
-            "Culture": 60
-        },
-        {
-            "Available resources": 0,
-            "Name of the civilization": "AH�V",
-            "Round number": 2,
-            "Technology": 97,
-            "Universe": "model.Universe@266474c2",
-            "Society": 64,
-            "Culture": 13
-        },
-        {
-            "Available resources": 0,
-            "Name of the civilization": "sVO�S",
-            "Round number": 2,
-            "Technology": 10,
-            "Universe": "model.Universe@266474c2",
-            "Society": 99,
-            "Culture": 42
-        },
-        {
-            "Available resources": 0,
-            "Name of the civilization": "���J\u000b",
-            "Round number": 2,
-            "Technology": 48,
-            "Universe": "model.Universe@266474c2",
-            "Society": 78,
-            "Culture": 11
-        },
-        {
-            "Available resources": 0,
-            "Name of the civilization": "��Ħ�",
-            "Round number": 2,
-            "Technology": 14,
-            "Universe": "model.Universe@266474c2",
-            "Society": 18,
-            "Culture": 81
-        },
-        {
-            "Available resources": 0,
-            "Name of the civilization": "\u0089�ّ",
-            "Round number": 2,
-            "Technology": 30,
-            "Universe": "model.Universe@266474c2",
-            "Society": 70,
-            "Culture": 37
-        },
-        {
-            "Available resources": 0,
-            "Name of the civilization": "M7؟\u001d",
-            "Round number": 2,
-            "Technology": 50,
-            "Universe": "model.Universe@266474c2",
-            "Society": 67,
-            "Culture": 11
-        },
-        {
-            "Available resources": 0,
-            "Name of the civilization": "tSw�^",
-            "Round number": 2,
-            "Technology": 83,
-            "Universe": "model.Universe@266474c2",
-            "Society": 85,
-            "Culture": 89
-        },
-        {
-            "Available resources": 0,
-            "Name of the civilization": "��\u000eȭ",
-            "Round number": 2,
-            "Technology": 30,
-            "Universe": "model.Universe@266474c2",
-            "Society": 54,
-            "Culture": 18
-        },
-        {
-            "Available resources": 0,
-            "Name of the civilization": "KޘBb",
-            "Round number": 2,
-            "Technology": 14,
-            "Universe": "model.Universe@266474c2",
-            "Society": 77,
-            "Culture": 47
-        },
-        {
-            "Available resources": 0,
-            "Name of the civilization": "�2���",
-            "Round number": 2,
-            "Technology": 5,
-            "Universe": "model.Universe@266474c2",
-            "Society": 86,
-            "Culture": 53
-        },
-        {
-            "Available resources": 0,
-            "Name of the civilization": "�m�P�",
-            "Round number": 2,
-            "Technology": 64,
-            "Universe": "model.Universe@266474c2",
-            "Society": 72,
+            "Name of the civilization": "=!=p�",
+            "Round number": 1,
+            "Technology": 4,
+            "Universe": "model.Universe@8570f433",
+            "Society": 55,
             "Culture": 32
         },
         {
             "Available resources": 0,
-            "Name of the civilization": "\u0005k1�~",
-            "Round number": 2,
-            "Technology": 94,
-            "Universe": "model.Universe@266474c2",
-            "Society": 61,
-            "Culture": 70
+            "Name of the civilization": "�\u0014O1�",
+            "Round number": 1,
+            "Technology": 56,
+            "Universe": "model.Universe@8570f433",
+            "Society": 54,
+            "Culture": 76
         },
         {
             "Available resources": 0,
-            "Name of the civilization": "u\u0000F��",
-            "Round number": 2,
-            "Technology": 29,
-            "Universe": "model.Universe@266474c2",
-            "Society": 17,
-            "Culture": 91
+            "Name of the civilization": "F��|�",
+            "Round number": 1,
+            "Technology": 10,
+            "Universe": "model.Universe@8570f433",
+            "Society": 78,
+            "Culture": 78
         },
         {
             "Available resources": 0,
-            "Name of the civilization": "z@�#\n",
-            "Round number": 2,
-            "Technology": 22,
-            "Universe": "model.Universe@266474c2",
-            "Society": 12,
-            "Culture": 95
+            "Name of the civilization": "(\u0018�^�",
+            "Round number": 1,
+            "Technology": 39,
+            "Universe": "model.Universe@8570f433",
+            "Society": 44,
+            "Culture": 6
         },
         {
             "Available resources": 0,
-            "Name of the civilization": "�yY�L",
-            "Round number": 2,
-            "Technology": 49,
-            "Universe": "model.Universe@266474c2",
-            "Society": 56,
-            "Culture": 68
+            "Name of the civilization": "{c�O\u001d",
+            "Round number": 1,
+            "Technology": 72,
+            "Universe": "model.Universe@8570f433",
+            "Society": 29,
+            "Culture": 100
         },
         {
             "Available resources": 0,
-            "Name of the civilization": "+?c\u0007�",
-            "Round number": 2,
-            "Technology": 97,
-            "Universe": "model.Universe@266474c2",
-            "Society": 40,
-            "Culture": 47
+            "Name of the civilization": "���&�",
+            "Round number": 1,
+            "Technology": 73,
+            "Universe": "model.Universe@8570f433",
+            "Society": 46,
+            "Culture": 36
         },
         {
             "Available resources": 0,
-            "Name of the civilization": "���9",
-            "Round number": 2,
-            "Technology": 17,
-            "Universe": "model.Universe@266474c2",
-            "Society": 39,
-            "Culture": 88
+            "Name of the civilization": "Ol���",
+            "Round number": 1,
+            "Technology": 50,
+            "Universe": "model.Universe@8570f433",
+            "Society": 69,
+            "Culture": 69
         },
         {
             "Available resources": 0,
-            "Name of the civilization": "���p�",
-            "Round number": 2,
-            "Technology": 52,
-            "Universe": "model.Universe@266474c2",
-            "Society": 32,
-            "Culture": 90
+            "Name of the civilization": "�W\u0080�",
+            "Round number": 1,
+            "Technology": 65,
+            "Universe": "model.Universe@8570f433",
+            "Society": 86,
+            "Culture": 50
         },
         {
             "Available resources": 0,
-            "Name of the civilization": "\u0016ղ��",
-            "Round number": 2,
-            "Technology": 81,
-            "Universe": "model.Universe@266474c2",
-            "Society": 12,
-            "Culture": 75
-        },
-        {
-            "Available resources": 0,
-            "Name of the civilization": "L��J�",
-            "Round number": 2,
-            "Technology": 34,
-            "Universe": "model.Universe@266474c2",
-            "Society": 1,
-            "Culture": 75
-        },
-        {
-            "Available resources": 0,
-            "Name of the civilization": "�]B�\u000f",
-            "Round number": 2,
-            "Technology": 38,
-            "Universe": "model.Universe@266474c2",
-            "Society": 82,
-            "Culture": 15
-        },
-        {
-            "Available resources": 0,
-            "Name of the civilization": "�\u001e\u001dg\u0015",
-            "Round number": 2,
-            "Technology": 4,
-            "Universe": "model.Universe@266474c2",
-            "Society": 64,
-            "Culture": 15
-        },
-        {
-            "Available resources": 0,
-            "Name of the civilization": "�0�<\u0006",
-            "Round number": 2,
-            "Technology": 13,
-            "Universe": "model.Universe@266474c2",
-            "Society": 9,
-            "Culture": 49
-        },
-        {
-            "Available resources": 0,
-            "Name of the civilization": "1�J\u001a)",
-            "Round number": 2,
+            "Name of the civilization": "B�,ł",
+            "Round number": 1,
             "Technology": 70,
-            "Universe": "model.Universe@266474c2",
-            "Society": 77,
-            "Culture": 49
-        },
-        {
-            "Available resources": 0,
-            "Name of the civilization": "�0��\u0012",
-            "Round number": 2,
-            "Technology": 29,
-            "Universe": "model.Universe@266474c2",
-            "Society": 77,
+            "Universe": "model.Universe@8570f433",
+            "Society": 56,
             "Culture": 10
         },
         {
             "Available resources": 0,
-            "Name of the civilization": "�KJF3",
-            "Round number": 2,
-            "Technology": 47,
-            "Universe": "model.Universe@266474c2",
-            "Society": 6,
-            "Culture": 69
+            "Name of the civilization": "�$�\u001c=",
+            "Round number": 1,
+            "Technology": 67,
+            "Universe": "model.Universe@8570f433",
+            "Society": 21,
+            "Culture": 92
+        },
+        {
+            "Available resources": 0,
+            "Name of the civilization": "p�V��",
+            "Round number": 1,
+            "Technology": 32,
+            "Universe": "model.Universe@8570f433",
+            "Society": 30,
+            "Culture": 95
+        },
+        {
+            "Available resources": 0,
+            "Name of the civilization": "��x\u0016e",
+            "Round number": 1,
+            "Technology": 1,
+            "Universe": "model.Universe@8570f433",
+            "Society": 32,
+            "Culture": 49
+        },
+        {
+            "Available resources": 0,
+            "Name of the civilization": "#�\u0006��",
+            "Round number": 1,
+            "Technology": 73,
+            "Universe": "model.Universe@8570f433",
+            "Society": 20,
+            "Culture": 14
+        },
+        {
+            "Available resources": 0,
+            "Name of the civilization": "�=`W",
+            "Round number": 1,
+            "Technology": 55,
+            "Universe": "model.Universe@8570f433",
+            "Society": 5,
+            "Culture": 20
+        },
+        {
+            "Available resources": 0,
+            "Name of the civilization": "��$r�",
+            "Round number": 1,
+            "Technology": 43,
+            "Universe": "model.Universe@8570f433",
+            "Society": 56,
+            "Culture": 56
+        },
+        {
+            "Available resources": 0,
+            "Name of the civilization": "��\u000f=�",
+            "Round number": 1,
+            "Technology": 83,
+            "Universe": "model.Universe@8570f433",
+            "Society": 71,
+            "Culture": 80
+        },
+        {
+            "Available resources": 0,
+            "Name of the civilization": "�\u0010��\u001d",
+            "Round number": 1,
+            "Technology": 17,
+            "Universe": "model.Universe@8570f433",
+            "Society": 56,
+            "Culture": 59
+        },
+        {
+            "Available resources": 0,
+            "Name of the civilization": "\u0013'6z$",
+            "Round number": 1,
+            "Technology": 22,
+            "Universe": "model.Universe@8570f433",
+            "Society": 30,
+            "Culture": 82
         }
     ],
     "dimension": 10

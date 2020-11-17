@@ -1,9 +1,9 @@
 {
-    "Available resources": 6,
-    "Name of the civilization": "dfa",
-    "Round number": 2,
-    "Technology": 3,
-    "Universe": "model.Universe@266474c2",
-    "Society": 3,
-    "Culture": 3
+    "Available resources": 12,
+    "Name of the civilization": "asdf",
+    "Round number": 7,
+    "Technology": 30,
+    "Universe": "model.Universe@8570f433",
+    "Society": 27,
+    "Culture": 30
 }
