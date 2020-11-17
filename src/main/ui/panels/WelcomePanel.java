@@ -5,19 +5,26 @@ import model.Universe;
 import ui.Navigator;
 import ui.UserApp;
 
+import javax.sound.sampled.AudioInputStream;
+import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.Clip;
 import javax.swing.*;
 import java.awt.*;
+import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
 //Represent the welcome panel
 public class WelcomePanel extends Panel {
     private static final String FILE_NAME = "./data/evgeniy-kiselov-dark-forest-wallpapers-12.jpg";
+    private static final String MUSIC_ICON = ",/data/music.jpg";
+    private static final String MUSIC = "./data/983316ffee0eaa3aab4ad7fdc85e6fcbb54e6840.wav "
+            + "(online-audio-converter.com).wav";
     private UserApp app;
 
     private List<JButton> backBts;
     private JButton playMusic;
+
 
     private JLabel citation;
     private GridBagConstraints gridBagConstraints;
@@ -36,6 +43,7 @@ public class WelcomePanel extends Panel {
         setPreferredSize(new Dimension(1200,742));
         setVisible(true);
 
+        playSound(MUSIC);
         initialiseContents();
         initialiseInteraction();
         addToPanel();
@@ -57,6 +65,8 @@ public class WelcomePanel extends Panel {
         buttons.add(bt2);
         JButton bt3 = new JButton("EXIT AND SAVE");
         buttons.add(bt3);
+        ImageIcon music = new ImageIcon(MUSIC_ICON);
+        playMusic = new JButton("music play/stop");
 
         citation = new JLabel("--inspired by Liu CiXin's Three Body Problem series--");
         citation.setFont(new Font("MonoSpaced",Font.BOLD,20));
@@ -115,6 +125,8 @@ public class WelcomePanel extends Panel {
             this.add(bt,gridBagConstraints);
             y++;
         }
+        gridBagConstraints.gridy = 5;
+        this.add(playMusic,gridBagConstraints);
 
 
     }
@@ -135,6 +147,36 @@ public class WelcomePanel extends Panel {
         //Exit -> exit
         buttons.get(3).addActionListener(e -> app.exitAndSave());
 
+        //Play Music -> control music
+        playMusic.addActionListener(e -> controlMusic());
+
+    }
+
+    //MODIFIES: Clip
+    //EFFECTS: when the music icon is clicked, the music will be played
+    //         if the music is playing, then it will stop.
+    private void controlMusic() {
+        if (clip != null) {
+            if (clip.isRunning()) {
+                clip.stop();
+            } else {
+                clip.start();
+            }
+        }
+    }
+
+
+    //EFFECTS: play the background music continuously from data file
+    public void playSound(String soundName) {
+        try {
+            AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(new File(soundName).getAbsoluteFile());
+            clip = AudioSystem.getClip();
+            clip.open(audioInputStream);
+            clip.loop(Clip.LOOP_CONTINUOUSLY);
+        } catch (Exception ex) {
+            System.out.println("Error with playing sound.");
+            ex.printStackTrace();
+        }
     }
 
     //EFFECTS: update components on panel when needed
