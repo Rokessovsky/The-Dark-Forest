@@ -363,7 +363,23 @@ public abstract class CivilizationPanel extends Panel {
             starPluckerStart();
         }
 
+        otherCivilDevelopment();
+
         updatePanel();
+    }
+
+    //EFFECTS: other civilizations develop
+    public void otherCivilDevelopment() {
+        for (Civilization i : universe.getCivilizations()) {
+            i.addResources(6);
+            i.addTechnology();
+            i.addTechnology();
+            i.addSociety();
+            i.addSociety();
+            i.addCulture();
+            i.addCulture();
+            i.addRoundNumber();
+        }
     }
 
     //EFFECTS: round start action
