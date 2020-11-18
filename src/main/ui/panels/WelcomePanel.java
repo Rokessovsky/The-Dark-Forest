@@ -16,8 +16,15 @@ import java.util.List;
 
 //Represent the welcome panel
 public class WelcomePanel extends Panel {
+
+    //Image source:https://www.artstation.com/artwork/2EmZJ
     private static final String FILE_NAME = "./data/evgeniy-kiselov-dark-forest-wallpapers-12.jpg";
+
+
     private static final String MUSIC_ICON = ",/data/music.jpg";
+
+    //MUSIC : DUST by Hans Zimmer
+    //Sources : https://www.youtube.com/watch?v=-0_VuwvvS-k
     private static final String MUSIC = "./data/983316ffee0eaa3aab4ad7fdc85e6fcbb54e6840.wav "
             + "(online-audio-converter.com).wav";
     private UserApp app;

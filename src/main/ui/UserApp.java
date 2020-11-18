@@ -204,6 +204,27 @@ public class UserApp extends JFrame {
 
     }
 
+    //MODIFIES: JSon
+    //EFFECTS: save the game
+    public void saveGame() {
+        try {
+            cvWriter = new CivilizationWriter(CIVILIZATION_STORE);
+            uniWriter = new UniverseWriter(UNIVERSE_STORE);
+
+            cvWriter.open();
+            cvWriter.write(mainPanel.getCivilization());
+            cvWriter.close();
+
+            uniWriter.open();
+            uniWriter.write(mainPanel.getUniverse());
+            uniWriter.close();
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+    }
+
 
 
 //    //MODIFIES: panel

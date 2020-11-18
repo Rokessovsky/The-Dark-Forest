@@ -13,6 +13,7 @@ import java.awt.*;
 //Represent a level 1 civilization
 public class Level1CivilizationPanel extends CivilizationPanel {
 
+    //Image Source: https://www.pinterest.ca/pin/406520303848209690/
     private static final String FILE_NAME = "./data/level 1.jpg";
 
     public Level1CivilizationPanel(UserApp app, Civilization myCivil, Universe universe) {

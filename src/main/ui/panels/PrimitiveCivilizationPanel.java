@@ -10,6 +10,7 @@ import java.awt.*;
 //Represent a primitive civilization
 public class PrimitiveCivilizationPanel extends CivilizationPanel {
 
+    //Image source: https://www.wayfair.com/decor-pillows/pdx/trademark-fine-art-new-york-new-york-skyline-bg-1-graphic-art-print-on-wrapped-canvas-hyt26847.html
     private static final String FILE_NAME = "./data/new-york-new-york-skyline-bg-1-graphic-art-print-on-wrapped-canvas."
             + "jpg";
 

@@ -30,6 +30,8 @@ public abstract class CivilizationPanel extends Panel {
 
         addToPanel();
 
+        updatePanel();
+
 
 
 
@@ -161,6 +163,7 @@ public abstract class CivilizationPanel extends Panel {
         });
 
         buttons.get(1).addActionListener(e -> {
+            app.saveGame();
             moveFromTo(new WelcomePanel(app,myCivil,universe));
         });
 
@@ -176,6 +179,7 @@ public abstract class CivilizationPanel extends Panel {
 
             roundEndConclusion();
             roundStarter();
+
         } else {
             JFrame frame = new JFrame("Warning");
             frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
@@ -196,6 +200,8 @@ public abstract class CivilizationPanel extends Panel {
                     + "As a punishment, your technology level will be deduced by 10");
 
             myCivil.setTechnology(myCivil.getTechnology() - 10);
+
+
         }
     }
 
@@ -210,6 +216,7 @@ public abstract class CivilizationPanel extends Panel {
                     + "As a punishment, your resources will be reduced by 10");
 
             myCivil.setResources(myCivil.getResources() - 10);
+
         }
     }
 
@@ -227,6 +234,7 @@ public abstract class CivilizationPanel extends Panel {
 
             myCivil.setSociety(myCivil.getTechnology());
             myCivil.setCulture(myCivil.getTechnology());
+
         }
     }
 
@@ -253,22 +261,52 @@ public abstract class CivilizationPanel extends Panel {
     }
 
     public void cultureDevelop(int c) {
-        for (int i = 1; i <= c; i++) {
-            myCivil.addCulture();
+        if (myCivil.getCulture() + c >= myCivil.getDevelopmentLimits()) {
+            for (int i = 1; i <= c; i++) {
+                myCivil.addCulture();
+            }
+        } else {
+            JFrame frame = new JFrame("Message from controller");
+            frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+            JOptionPane.showMessageDialog(frame,"Your culture has reached development limits: "
+                    + myCivil.getDevelopmentLimits() + "points \n"
+                    + "You've advanced to the highest level possible.");
+
+            myCivil.setCulture(myCivil.getDevelopmentLimits());
         }
     }
 
     //EFFECTS: develop society
     public void societyDevelop(int s) {
-        for (int i = 1; i <= s; i++) {
-            myCivil.addSociety();
+        if (myCivil.getSociety() + s >= myCivil.getDevelopmentLimits()) {
+            for (int i = 1; i <= s; i++) {
+                myCivil.addSociety();
+            }
+        } else {
+            JFrame frame = new JFrame("Message from controller");
+            frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+            JOptionPane.showMessageDialog(frame,"Your society has reached development limits: "
+                    + myCivil.getDevelopmentLimits() + "points \n"
+                    + "You've advanced to the highest level possible.");
+
+            myCivil.setSociety(myCivil.getDevelopmentLimits());
         }
     }
 
     //EFFECTS: develop technology
     public void teachDevelop(int t) {
-        for (int i = 1; i <= t; i++) {
-            myCivil.addTechnology();
+        if (myCivil.getTechnology() + t >= myCivil.getDevelopmentLimits()) {
+            for (int i = 1; i <= t; i++) {
+                myCivil.addTechnology();
+            }
+        } else {
+            JFrame frame = new JFrame("Message from controller");
+            frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+            JOptionPane.showMessageDialog(frame,"Your technology has reached development limits: "
+                    + myCivil.getDevelopmentLimits() + "points \n"
+                    + "You've advanced to the highest level possible.");
+
+            myCivil.setTechnology(myCivil.getDevelopmentLimits());
         }
 
     }
@@ -324,6 +362,8 @@ public abstract class CivilizationPanel extends Panel {
         } else if (myCivil.getTechnology() >= myCivil.getTechLevel3()) {
             starPluckerStart();
         }
+
+        updatePanel();
     }
 
     //EFFECTS: round start action
@@ -341,7 +381,7 @@ public abstract class CivilizationPanel extends Panel {
         societyStagnation();
         resourcesConclude(10);
 
-        updatePanel();
+
 
     }
 
@@ -358,7 +398,7 @@ public abstract class CivilizationPanel extends Panel {
         level2ProactiveContact();
         resourcesConclude(15);
 
-        updatePanel();
+
     }
 
     //EFFECTS: round start action
@@ -376,7 +416,7 @@ public abstract class CivilizationPanel extends Panel {
 
         resourcesConclude(12);
 
-        updatePanel();
+
     }
 
     //EFFECTS: round start action
@@ -391,7 +431,7 @@ public abstract class CivilizationPanel extends Panel {
 
         resourcesConclude(15);
 
-        updatePanel();
+
     }
 
     //EFFECTS: dialog to ask users add three fields
@@ -401,6 +441,8 @@ public abstract class CivilizationPanel extends Panel {
         frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         JOptionPane.showMessageDialog(frame,"You obtain " + n + " resources, please distribute "
                 + "them wisely");
+
+
     }
 
     //EFFECTS: helper, move to another panel
@@ -856,6 +898,7 @@ public abstract class CivilizationPanel extends Panel {
                 + "\n Culture level: " + myCivil.getCulture()
                 + "\n Society level: " + myCivil.getSociety()
                 + "\n Resources: " + myCivil.getResources());
+
     }
 
 

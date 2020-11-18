@@ -10,6 +10,8 @@ import java.util.Scanner;
 
 //Represent a level 2 civilization
 public class Level2CivilizationPanel extends CivilizationPanel {
+
+    //Image Source: https://zhuanlan.zhihu.com/p/23889753
     private static final String FILE_NAME = "./data/Level 2.jpg";
 
     public Level2CivilizationPanel(UserApp app, Civilization myCivil, Universe universe) {

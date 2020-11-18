@@ -10,6 +10,7 @@ import java.awt.*;
 //Represent a tutorial panel
 public class TutorialPanel extends Panel {
 
+    //Image Source: https://www.artstation.com/artwork/1nxGo2
     private static final String FILE_NAME = "./data/tutorial.jpg";
 
     public TutorialPanel(UserApp app, Civilization myCivil, Universe universe) {

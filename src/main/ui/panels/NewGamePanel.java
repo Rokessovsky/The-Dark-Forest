@@ -20,7 +20,7 @@ public class NewGamePanel extends Panel {
     private JTextField cosUniSizeText;
 
 
-
+    //Image source: https://www.esquire.com/entertainment/tv/a33861100/the-three-body-problem-netflix-series-plot-release-date-trailer-details/
     private static final String FILE_NAME = "./data/three-body-problem-new-dand-project-netflix.jpg";
 
     //Constructor

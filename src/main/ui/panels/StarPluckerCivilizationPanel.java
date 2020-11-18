@@ -11,6 +11,7 @@ import java.awt.*;
 //Represent a star plucker civilization
 public class StarPluckerCivilizationPanel extends CivilizationPanel {
 
+    //Image Source: https://k.sina.cn/article_3019808433_b3fe9eb100101ti05.html
     private static final String FILE_NAME = "./data/starPlucker.jpeg";
 
     public StarPluckerCivilizationPanel(UserApp app, Civilization myCivil, Universe universe) {
