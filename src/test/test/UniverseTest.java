@@ -93,6 +93,29 @@ public class UniverseTest {
     }
 
 
+    @Test
+    public void testEquals() {
+        assertFalse(galaxy.equals(null));
+
+        assertFalse(galaxy.equals(earth));
+
+        Universe testUni = new Universe("galax",10);
+        assertFalse(galaxy.equals(testUni));
+
+        Universe testUni2 = new Universe("galaxy",9);
+        assertFalse(galaxy.equals(testUni2));
+
+        Universe testUni3 = new Universe("galaxy",10);
+        testUni3.addCivilization(earth);
+        testUni3.addCivilization(threeBody);
+
+        galaxy.addCivilization(earth);
+
+        assertFalse(galaxy.equals(testUni3));
+
+    }
+
+
 
 
 

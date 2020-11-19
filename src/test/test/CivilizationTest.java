@@ -258,10 +258,31 @@ class CivilizationTest {
 
     @Test
     public void testEquals() {
+        assertFalse(earth.equals(null));
         assertFalse(earth.equals(solar));
-        Civilization testCv = new Civilization("earth",0,0,0,solar);
 
+        Civilization testCv = new Civilization("earth",0,0,0,solar);
         assertTrue(earth.equals(testCv));
+
+        Civilization testCv2 = new Civilization("earth",1,0,0,solar);
+        assertFalse(earth.equals(testCv2));
+
+        Civilization testCv3 = new Civilization("earth",0,1,0,solar);
+        assertFalse(earth.equals(testCv3));
+
+        Civilization testCv4 = new Civilization("earth",0,0,1,solar);
+        assertFalse(earth.equals(testCv4));
+
+        Civilization testCv5 = new Civilization("eart",0,0,0,solar);
+        assertFalse(earth.equals(testCv5));
+
+        Universe testUni = new Universe("s",3);
+        Civilization testCv6 = new Civilization("earth",0,0,0,testUni);
+        assertFalse(earth.equals(testCv6));
+
+
+
+
 
     }
 
