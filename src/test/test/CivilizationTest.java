@@ -280,6 +280,21 @@ class CivilizationTest {
         Civilization testCv6 = new Civilization("earth",0,0,0,testUni);
         assertFalse(earth.equals(testCv6));
 
+        Civilization testCv7 = new Civilization("earth",0,0,0,solar);
+        testCv7.setRoundNumber(7);
+        earth.setRoundNumber(2);
+        assertFalse(earth.equals(testCv7));
+
+        Civilization testCv8 = new Civilization("earth",0,0,0,solar);
+        testCv8.setResources(122);
+        earth.setResources(12);
+        assertFalse(earth.equals(testCv8));
+
+        Civilization testCv9 = new Civilization("earth",0,0,0,solar);
+        testCv9.setDimension(5);
+        earth.setDimension(10);
+        assertFalse(earth.equals(testCv9));
+
 
 
 
