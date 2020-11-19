@@ -261,7 +261,7 @@ public abstract class CivilizationPanel extends Panel {
     }
 
     public void cultureDevelop(int c) {
-        if (myCivil.getCulture() + c >= myCivil.getDevelopmentLimits()) {
+        if (myCivil.getCulture() + c <= myCivil.getDevelopmentLimits()) {
             for (int i = 1; i <= c; i++) {
                 myCivil.addCulture();
             }
@@ -278,7 +278,7 @@ public abstract class CivilizationPanel extends Panel {
 
     //EFFECTS: develop society
     public void societyDevelop(int s) {
-        if (myCivil.getSociety() + s >= myCivil.getDevelopmentLimits()) {
+        if (myCivil.getSociety() + s <= myCivil.getDevelopmentLimits()) {
             for (int i = 1; i <= s; i++) {
                 myCivil.addSociety();
             }
@@ -295,7 +295,7 @@ public abstract class CivilizationPanel extends Panel {
 
     //EFFECTS: develop technology
     public void teachDevelop(int t) {
-        if (myCivil.getTechnology() + t >= myCivil.getDevelopmentLimits()) {
+        if (myCivil.getTechnology() + t <= myCivil.getDevelopmentLimits()) {
             for (int i = 1; i <= t; i++) {
                 myCivil.addTechnology();
             }
@@ -914,7 +914,6 @@ public abstract class CivilizationPanel extends Panel {
                 + "\n Culture level: " + myCivil.getCulture()
                 + "\n Society level: " + myCivil.getSociety()
                 + "\n Resources: " + myCivil.getResources());
-
     }
 
 

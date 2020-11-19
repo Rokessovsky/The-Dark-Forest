@@ -1,9 +1,9 @@
 {
-    "Available resources": 116,
-    "Name of the civilization": "FHIDUH",
-    "Round number": 30,
-    "Technology": 96,
-    "Universe": "model.Universe@3b35ae68",
-    "Society": 95,
-    "Culture": 96
+    "Available resources": 21,
+    "Name of the civilization": "gdf",
+    "Round number": 2,
+    "Technology": 2,
+    "Universe": "model.Universe@f755fbea",
+    "Society": 4,
+    "Culture": 3
 }

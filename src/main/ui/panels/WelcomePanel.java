@@ -21,7 +21,6 @@ public class WelcomePanel extends Panel {
     private static final String FILE_NAME = "./data/evgeniy-kiselov-dark-forest-wallpapers-12.jpg";
 
 
-    private static final String MUSIC_ICON = ",/data/music.jpg";
 
     //MUSIC : DUST by Hans Zimmer
     //Sources : https://www.youtube.com/watch?v=-0_VuwvvS-k
@@ -45,7 +44,7 @@ public class WelcomePanel extends Panel {
         this.app = app;
         this.backBts = new ArrayList<>();
 
-        setAlignmentX(Component.RIGHT_ALIGNMENT);
+        setAlignmentX(Component.CENTER_ALIGNMENT);
         setAlignmentY(Component.TOP_ALIGNMENT);
         setPreferredSize(new Dimension(1200,742));
         setVisible(true);
@@ -54,6 +53,8 @@ public class WelcomePanel extends Panel {
         initialiseContents();
         initialiseInteraction();
         addToPanel();
+
+        updatePanel();
 
 
 
@@ -72,7 +73,7 @@ public class WelcomePanel extends Panel {
         buttons.add(bt2);
         JButton bt3 = new JButton("EXIT AND SAVE");
         buttons.add(bt3);
-        ImageIcon music = new ImageIcon(MUSIC_ICON);
+
         playMusic = new JButton("music play/stop");
 
         citation = new JLabel("--inspired by Liu CiXin's Three Body Problem series--");
@@ -121,11 +122,11 @@ public class WelcomePanel extends Panel {
     @Override
     protected void addToPanel() {
         gridBagConstraints = new GridBagConstraints();
-        gridBagConstraints.insets = new Insets(20,550,250,550);
+        gridBagConstraints.insets = new Insets(20,400,250,600);
         gridBagConstraints.gridy = 0;
         this.add(citation,gridBagConstraints);
 
-        gridBagConstraints.insets = new Insets(20,550,5,550);
+        gridBagConstraints.insets = new Insets(20,400,5,600);
         int y = 1;
         for (JButton bt: buttons) {
             gridBagConstraints.gridy = y;

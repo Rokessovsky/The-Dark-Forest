@@ -256,6 +256,15 @@ class CivilizationTest {
         assertFalse(earth.getIsHarmful());
     }
 
+    @Test
+    public void testEquals() {
+        assertFalse(earth.equals(solar));
+        Civilization testCv = new Civilization("earth",0,0,0,solar);
+
+        assertTrue(earth.equals(testCv));
+
+    }
+
 
 
 
