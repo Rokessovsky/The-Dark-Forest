@@ -1,9 +1,9 @@
 {
-    "Available resources": 21,
-    "Name of the civilization": "gdf",
+    "Available resources": 0,
+    "Name of the civilization": "",
     "Round number": 2,
-    "Technology": 2,
-    "Universe": "model.Universe@f755fbea",
-    "Society": 4,
-    "Culture": 3
+    "Technology": 0,
+    "Universe": "model.Universe@86f6af17",
+    "Society": 0,
+    "Culture": 0
 }

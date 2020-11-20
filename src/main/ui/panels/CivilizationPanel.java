@@ -1,5 +1,6 @@
 package ui.panels;
 
+import exceptions.EndGameException;
 import model.Civilization;
 import model.Universe;
 import ui.UserApp;
@@ -7,7 +8,7 @@ import ui.UserApp;
 import javax.swing.*;
 import javax.swing.border.Border;
 import java.awt.*;
-import java.util.Scanner;
+
 
 public abstract class CivilizationPanel extends Panel {
 
@@ -172,13 +173,19 @@ public abstract class CivilizationPanel extends Panel {
     //EFFECTS: action for each round
     protected void roundAction(int t, int s, int c) {
         if (myCivil.getResources() >= t + s + c) {
-            development(myCivil.getResources(), t, s, c);
+
+            development(t, s, c);
 
             roundNumber++;
             myCivil.addRoundNumber();
 
             roundEndConclusion();
-            roundStarter();
+
+            try {
+                roundStarter();
+            } catch (EndGameException e) {
+                new UserApp();
+            }
 
         } else {
             JFrame frame = new JFrame("Warning");
@@ -189,54 +196,7 @@ public abstract class CivilizationPanel extends Panel {
         }
     }
 
-    //EFFECTS: civilization's society degenerates,tech level will fall back to the same level as culture
-    public void techDegenerates() {
-        if (myCivil.getTechnology() - myCivil.getCulture() > 10) {
-            JFrame frame = new JFrame("WARNING!!!!!");
-            frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-            JOptionPane.showMessageDialog(frame,"Ooops,your culture level is falling far behind your "
-                    + "technology.\n The technology development needs support of all other academic areas.\n"
-                    + "Your level of technology has exceeded the range that the public could understand and accept.\n"
-                    + "As a punishment, your technology level will be deduced by 10");
 
-            myCivil.setTechnology(myCivil.getTechnology() - 10);
-
-
-        }
-    }
-
-    //EFFECTS: the civilization have inner chaos,user will be assigned less resources
-    public void innerChaos() {
-        if (myCivil.getTechnology() - myCivil.getSociety() > 10) {
-            JFrame frame = new JFrame("WARNING!!!!!");
-            frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-            JOptionPane.showMessageDialog(frame,"Ooops,your society level is falling far behind your technology"
-                    + " level.\n You used too many resources to development technology and ignored the livelihood.\n"
-                    + "of your people. Your people are angry and start a riot \n"
-                    + "As a punishment, your resources will be reduced by 10");
-
-            myCivil.setResources(myCivil.getResources() - 10);
-
-        }
-    }
-
-    //EFFECTS: tech stagnate, society and culture fall back to the level of tech
-    public void societyStagnation() {
-        if (myCivil.getSociety() - myCivil.getTechnology() > 10
-                || myCivil.getCulture() - myCivil.getTechnology() > 10) {
-            JFrame frame = new JFrame("WARNING!!!!!");
-            frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-            JOptionPane.showMessageDialog(frame,"Ooops, your technology level is falling far behind your "
-                    + "society requirements.\n The development of society is not based on any substantial "
-                    + "technological breakthrough\n Thus the bubble economy is very easily broken.\n"
-                    + "As punishment,your society and culture level will degrade to your technological level"
-            );
-
-            myCivil.setSociety(myCivil.getTechnology());
-            myCivil.setCulture(myCivil.getTechnology());
-
-        }
-    }
 
     //EFFECTS: conclusion for the civilization at the end of a round
     public void roundEndConclusion() {
@@ -253,7 +213,7 @@ public abstract class CivilizationPanel extends Panel {
 
 
     //EFFECTS: user will be assigned certain resources and user can decide how to distribute them
-    public void development(int d,int tech, int society, int culture) {
+    public void development(int tech, int society, int culture) {
 
         teachDevelop(tech);
         societyDevelop(society);
@@ -311,42 +271,12 @@ public abstract class CivilizationPanel extends Panel {
 
     }
 
-    //EFFECTS: my civilization is destroyed by star plucker
-    public void destroyedByStarPlucker() {
-        JFrame frame = new JFrame("Message");
-        frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-        JOptionPane.showMessageDialog(frame,"Your contact attempt reached to a star plucker,the most advanced "
-                + "form of civilization.\nThey lunch attack immediately,using the cheapest yet the most effective way "
-                + "of attack.\nA photoid with light speed strike the star in the center of your galaxy.\n This leads to"
-                + "the planets' utter incineration,your whole galaxy falls into flames...");
-        endGame();
-    }
 
-
-    //EFFECTS: end the game
-    public void endGame() {
-        JFrame frame = new JFrame("Message");
-        frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-
-        JOptionPane.showMessageDialog(frame,"The game is end, your civilization " + myCivil.getName()
-                + " has survived for " + myCivil.getRoundNumber() + " rounds");
-        new UserApp();
-
-    }
-
-    //EFFECTS: the contact with another civilization is invalid because the enemy tech level is below level2
-    public void invalidContact() {
-        JFrame frame = new JFrame("Message");
-        frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-        
-        JOptionPane.showMessageDialog(frame,"There's no civilization on your broadcast direction.\n"
-                + "Your contact attempt didn't reach to any civilizations");
-    }
 
 
     //MODIFIES: panel
     //EFFECT: based on the parameters of civilization, navigate to different panels
-    public void roundStarter() {
+    public void roundStarter() throws EndGameException {
 
         if (universe.getCivilizations().size() == 0) {
             winCondition1();
@@ -383,7 +313,7 @@ public abstract class CivilizationPanel extends Panel {
     }
 
     //EFFECTS: round start action
-    public void starPluckerStart() {
+    public void starPluckerStart() throws EndGameException {
         myCivil.addResources(15);
         moveFromTo(new StarPluckerCivilizationPanel(app,myCivil,
                 universe));
@@ -395,6 +325,7 @@ public abstract class CivilizationPanel extends Panel {
         starPluckerSelfExpose();
         techDegenerates();
         societyStagnation();
+
         resourcesConclude(10);
 
 
@@ -402,7 +333,7 @@ public abstract class CivilizationPanel extends Panel {
     }
 
     //EFFECTS: round start action
-    public void level2Start() {
+    public void level2Start() throws EndGameException {
         myCivil.addResources(15);
         moveFromTo(new Level2CivilizationPanel(app,myCivil,
                 universe));
@@ -418,7 +349,7 @@ public abstract class CivilizationPanel extends Panel {
     }
 
     //EFFECTS: round start action
-    public void level1Start() {
+    public void level1Start() throws EndGameException {
         myCivil.addResources(12);
         moveFromTo(new Level1CivilizationPanel(app,myCivil,
                 universe));
@@ -429,6 +360,7 @@ public abstract class CivilizationPanel extends Panel {
 
         level1ProactiveContact();
         darkForestWarning();
+
 
         resourcesConclude(12);
 
@@ -481,8 +413,89 @@ public abstract class CivilizationPanel extends Panel {
 
     }
 
+    //EFFECTS: civilization's society degenerates,tech level will fall back to the same level as culture
+    public void techDegenerates() {
+        if (myCivil.getTechnology() - myCivil.getCulture() > 10) {
+            JFrame frame = new JFrame("WARNING!!!!!");
+            frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+            JOptionPane.showMessageDialog(frame,"Ooops,your culture level is falling far behind your "
+                    + "technology.\n The technology development needs support of all other academic areas.\n"
+                    + "Your level of technology has exceeded the range that the public could understand and accept.\n"
+                    + "As a punishment, your technology level will be deduced by 10");
+
+            myCivil.setTechnology(myCivil.getTechnology() - 10);
+        }
+    }
+
+    //EFFECTS: the civilization have inner chaos,user will be assigned less resources
+    public void innerChaos() {
+        if (myCivil.getTechnology() - myCivil.getSociety() > 10) {
+            JFrame frame = new JFrame("WARNING!!!!!");
+            frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+            JOptionPane.showMessageDialog(frame,"Ooops,your society level is falling far behind your technology"
+                    + " level.\n You used too many resources to development technology and ignored the livelihood.\n"
+                    + "of your people. Your people are angry and start a riot \n"
+                    + "As a punishment, your resources will be reduced by 10");
+
+            myCivil.setResources(myCivil.getResources() - 10);
+
+        }
+    }
+
+    //EFFECTS: tech stagnate, society and culture fall back to the level of tech
+    public void societyStagnation() {
+        if (myCivil.getSociety() - myCivil.getTechnology() > 10
+                || myCivil.getCulture() - myCivil.getTechnology() > 10) {
+            JFrame frame = new JFrame("WARNING!!!!!");
+            frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+            JOptionPane.showMessageDialog(frame,"Ooops, your technology level is falling far behind your "
+                    + "society requirements.\n The development of society is not based on any substantial "
+                    + "technological breakthrough\n Thus the bubble economy is very easily broken.\n"
+                    + "As punishment,your society and culture level will degrade to your technological level"
+            );
+
+            myCivil.setSociety(myCivil.getTechnology());
+            myCivil.setCulture(myCivil.getTechnology());
+
+        }
+    }
+
+
+    //EFFECTS: my civilization is destroyed by star plucker
+    public void destroyedByStarPlucker() throws EndGameException {
+        JFrame frame = new JFrame("Message");
+        frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        JOptionPane.showMessageDialog(frame,"Your contact attempt reached to a star plucker,the most advanced "
+                + "form of civilization.\nThey lunch attack immediately,using the cheapest yet the most effective way "
+                + "of attack.\nA photoid with light speed strike the star in the center of your galaxy.\n This leads to"
+                + "the planets' utter incineration,your whole galaxy falls into flames...");
+        endGame();
+    }
+
+
+    //EFFECTS: end the game
+    public void endGame() throws EndGameException {
+        JFrame frame = new JFrame("Message");
+        frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+
+        JOptionPane.showMessageDialog(frame,"The game is end, your civilization " + myCivil.getName()
+                + " has survived for " + myCivil.getRoundNumber() + " rounds");
+
+        throw new EndGameException();
+
+    }
+
+    //EFFECTS: the contact with another civilization is invalid because the enemy tech level is below level2
+    public void invalidContact() {
+        JFrame frame = new JFrame("Message");
+        frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+
+        JOptionPane.showMessageDialog(frame,"There's no civilization on your broadcast direction.\n"
+                + "Your contact attempt didn't reach to any civilizations");
+    }
+
     //EFFECTS : proactively contact with other civilizations when my civilization is at level 1
-    public void level1ProactiveContact() {
+    public void level1ProactiveContact() throws EndGameException {
 
         String[] options = {"Yes, try to contact","No, remain silent"};
         JFrame frame = new JFrame("Proactively contact?");
@@ -501,7 +514,7 @@ public abstract class CivilizationPanel extends Panel {
 
 
     //EFFECTS: passively contact with other civilizations when my civilization is at level 1
-    public void level1SelfExpose() {
+    public void level1SelfExpose() throws EndGameException {
 
 
         if (myCivil.getTechnology() - myCivil.getSociety() > 8) {
@@ -517,7 +530,7 @@ public abstract class CivilizationPanel extends Panel {
     }
 
     //EFFECTS: process of contact with another civilization when the user civilization is at level 1
-    public void level1Contact() {
+    public void level1Contact() throws EndGameException {
         int max = universe.getCivilizations().size() - 1;
         int min = 0;
 
@@ -556,7 +569,7 @@ public abstract class CivilizationPanel extends Panel {
     }
 
     //EFFECTS: my civilization is destroyed by level 2 civilization
-    public void destroyedByLevel2Civil() {
+    public void destroyedByLevel2Civil() throws EndGameException {
         JFrame frame = new JFrame("Message");
         frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         JOptionPane.showMessageDialog(frame,"Your contact attempt reached to a civilization that has much "
@@ -581,7 +594,7 @@ public abstract class CivilizationPanel extends Panel {
     }
 
     //EFFECTS: passively contact with other civilizations when my civilization is at level 2
-    public void level2SelfExpose() {
+    public void level2SelfExpose() throws EndGameException {
         if (myCivil.getTechnology() - myCivil.getSociety() > 8) {
             JFrame frame = new JFrame("WARNING!!!!");
             frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
@@ -595,7 +608,7 @@ public abstract class CivilizationPanel extends Panel {
     }
 
     //EFFECTS: proactively contact with other civilizations when my civilization is at level 2
-    public void level2ProactiveContact() {
+    public void level2ProactiveContact() throws EndGameException {
         String[] options = {"Yes, try to contact","No, remain silent"};
         JFrame frame = new JFrame("Proactively contact?");
         frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
@@ -612,7 +625,7 @@ public abstract class CivilizationPanel extends Panel {
     }
 
     //EFFECTS: process of contact with another civilization when the user civilization is at level 2
-    public void level2Contact() {
+    public void level2Contact() throws EndGameException {
         int max = universe.getCivilizations().size() - 1;
         int min = 0;
 
@@ -656,7 +669,7 @@ public abstract class CivilizationPanel extends Panel {
     }
 
     //EFFECTS: attack and lose, might be eliminated if the enemy tech - my tech >= 10
-    public void attackAndLose(Civilization enemy) {
+    public void attackAndLose(Civilization enemy) throws EndGameException {
         if (myCivil.getResources() >= 30) {
             myCivil.setResources(myCivil.getResources() - 30);
             JFrame frame = new JFrame("Attack!!");
@@ -684,7 +697,7 @@ public abstract class CivilizationPanel extends Panel {
     }
 
     //EFFECTS: follows attack and lose. Enemy launch counter attack and eliminate my civilization
-    public void getCounterAttack() {
+    public void getCounterAttack() throws EndGameException {
         JFrame frame = new JFrame("Attack!!");
         frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         JOptionPane.showMessageDialog(frame,"...After they destroyed all your fleets\n Enemy gathered all their"
@@ -697,13 +710,13 @@ public abstract class CivilizationPanel extends Panel {
 
 
     //EFFECTS: civilization makes a safe statement
-    public void universeSafeStatement() {
+    public void universeSafeStatement() throws EndGameException {
         askWhetherMakeTheStatement();
 
 
     }
 
-    public void askWhetherMakeTheStatement() {
+    public void askWhetherMakeTheStatement() throws EndGameException {
         String[] options = {"Yes, make the statement","No, keep conquer"};
         JFrame frame = new JFrame("Universal Safety Statement?");
         frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
@@ -722,7 +735,7 @@ public abstract class CivilizationPanel extends Panel {
     }
 
     //EFFECTS: civilization makes universal safety statement
-    public void processUniversalSafetyStatement() {
+    public void processUniversalSafetyStatement() throws EndGameException {
         JFrame frame = new JFrame("Message");
         frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         JOptionPane.showMessageDialog(frame,"You chose to make universe safe statement,yet you didn't even know "
@@ -739,7 +752,7 @@ public abstract class CivilizationPanel extends Panel {
     }
 
     //EFFECTS: passively contact with other civilizations when my civilization is at Star Plucker level
-    public void starPluckerSelfExpose() {
+    public void starPluckerSelfExpose() throws EndGameException {
         if (myCivil.getTechnology() - myCivil.getSociety() > 8) {
             JFrame frame = new JFrame("Message");
             frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
@@ -754,7 +767,7 @@ public abstract class CivilizationPanel extends Panel {
     }
 
     //EFFECTS: process of contact with another civilization when the user civilization is at star plucker level
-    public void starPluckerContact() {
+    public void starPluckerContact() throws EndGameException {
         int max = universe.getCivilizations().size() - 1;
         int min = 0;
 
@@ -788,7 +801,7 @@ public abstract class CivilizationPanel extends Panel {
     }
 
     //EFFECTS: proactively contact with other civilizations when my civilization is at Star Plucker level
-    public void starPluckerProactiveContact() {
+    public void starPluckerProactiveContact() throws EndGameException {
         String[] options = {"Yes, try to contact","No, remain silent"};
         JFrame frame = new JFrame("Proactively contact?");
         frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
@@ -851,7 +864,7 @@ public abstract class CivilizationPanel extends Panel {
 
     //EFFECTS: a dimension war in universe eliminate all low level civilizations and
     //         reduce the dimensionality of the universe by 1
-    public void dimensionWar(Civilization enemy) {
+    public void dimensionWar(Civilization enemy) throws EndGameException {
         JFrame frame = new JFrame("Message");
         frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         JOptionPane.showMessageDialog(frame,"You encounter another Star Plucker, the largest cruelest war happens"
@@ -893,7 +906,7 @@ public abstract class CivilizationPanel extends Panel {
     }
 
     //EFFECTS: the dimension of universe falls to 0,game over
-    public void universeDestroyed() {
+    public void universeDestroyed() throws EndGameException {
         JFrame frame = new JFrame("Message");
         frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         JOptionPane.showMessageDialog(frame,"...Unfortunately, the dimension of the universe is reduced to 0 "

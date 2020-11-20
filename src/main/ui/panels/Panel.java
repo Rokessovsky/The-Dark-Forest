@@ -38,6 +38,7 @@ public abstract class Panel extends JPanel {
         setAlignmentX(Component.RIGHT_ALIGNMENT);
         setAlignmentY(Component.TOP_ALIGNMENT);
         setVisible(true);
+
     }
 
     // MODIFIES: this, UserApp app
