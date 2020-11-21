@@ -19,7 +19,7 @@ public class Level2CivilizationPanel extends CivilizationPanel {
 
     }
 
-    //MODIFIED: this
+    //MODIFIED: this,g
     //EFFECTS: set the background image
     @Override
     public void paintComponent(Graphics g) {

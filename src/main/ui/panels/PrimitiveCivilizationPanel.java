@@ -19,6 +19,8 @@ public class PrimitiveCivilizationPanel extends CivilizationPanel {
         super(app, myCivil, universe);
     }
 
+    //MODIFIES: this, g
+    //EFFECTS: set back ground images
     @Override
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
