@@ -1,6 +1,6 @@
 package ui.panels;
 
-import exceptions.EndGameException;
+import ui.exceptions.EndGameException;
 import model.Civilization;
 import model.Universe;
 import ui.UserApp;
