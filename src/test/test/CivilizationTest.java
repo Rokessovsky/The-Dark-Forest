@@ -4,6 +4,7 @@ import model.Civilization;
 import model.Universe;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import ui.exceptions.OutOfResourcesException;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -103,138 +104,174 @@ class CivilizationTest {
 
     @Test
     public void testAddTechnologyHasDPHasNotFull() {
-        assertEquals(0, earth.getTechnology());
+        try {
+            assertEquals(0, earth.getTechnology());
 
-        earth.addResources(5);
+            earth.addResources(5);
+            earth.civilDevelopment(2,0,0);
 
-        assertTrue(earth.addTechnology());
-
-        assertTrue(earth.addTechnology());
-
-
-
-        assertEquals(3, earth.getResources());
-        assertEquals(2, earth.getTechnology());
+            assertEquals(3, earth.getResources());
+            assertEquals(2, earth.getTechnology());
+        } catch (OutOfResourcesException e) {
+            fail("Exceptions is not expected");
+        }
     }
 
     @Test
     public void testAddTechnologyHasNoDP() {
-        assertFalse(earth.addTechnology());
+        try {
+            earth.civilDevelopment(2,0,0);
+            fail("Exception is expected");
+        } catch (OutOfResourcesException e) {
+            //expected
+        }
     }
 
     @Test
     public void testAddTechnologyFull() {
         earth.addResources(120);
-        for (int count = 1; count <= 100; count++) {
-            earth.addTechnology();
+        try {
+            earth.civilDevelopment(100,0,0);
+
+            assertEquals(100, earth.getTechnology());
+            assertEquals(20, earth.getResources());
+
+            earth.civilDevelopment(10,0,0);
+            assertEquals(100,earth.getTechnology());
+        } catch (OutOfResourcesException e) {
+            fail("Exception is not expected");
         }
-
-        assertEquals(100, earth.getTechnology());
-        assertEquals(20, earth.getResources());
-
-        assertFalse(earth.addTechnology());
     }
 
     @Test
     public void testAddTechnologyNoDPAndFull() {
         earth.addResources(100);
-        for (int count = 1; count <= 100; count++) {
-            earth.addTechnology();
+        try {
+            earth.civilDevelopment(100, 0, 0);
+
+            assertEquals(100, earth.getTechnology());
+            assertEquals(0, earth.getResources());
+
+            earth.civilDevelopment(10,0,0);
+            fail("Exception is expected!!");
+        } catch (OutOfResourcesException e) {
+            //expected
         }
-
-        assertEquals(100, earth.getTechnology());
-        assertEquals(0, earth.getResources());
-
-        assertFalse(earth.addTechnology());
     }
 
     @Test
     public void testAddSocietyHasDPHasNotFull() {
-        assertEquals(0, earth.getSociety());
+        try {
+            assertEquals(0, earth.getSociety());
 
-        earth.addResources(5);
-        assertTrue(earth.addSociety());
-        assertTrue(earth.addSociety());
+            earth.addResources(5);
+            earth.civilDevelopment(0,2,0);
 
-
-        assertEquals(3, earth.getResources());
-        assertEquals(2, earth.getSociety());
+            assertEquals(3, earth.getResources());
+            assertEquals(2, earth.getSociety());
+        } catch (OutOfResourcesException e) {
+            fail("Exceptions is not expected");
+        }
     }
 
     @Test
     public void testAddSocietyHasNoDP() {
-        assertFalse(earth.addSociety());
+        try {
+            earth.civilDevelopment(0,2,0);
+            fail("Exception is expected");
+        } catch (OutOfResourcesException e) {
+            //expected
+        }
     }
 
     @Test
     public void testAddSocietyFull() {
         earth.addResources(120);
-        for (int count = 1; count <= 100; count++) {
-            earth.addSociety();
+        try {
+            earth.civilDevelopment(0,100,0);
+
+            assertEquals(100, earth.getSociety());
+            assertEquals(20, earth.getResources());
+
+            earth.civilDevelopment(0,10,0);
+            assertEquals(100,earth.getSociety());
+        } catch (OutOfResourcesException e) {
+            fail("Exception is not expected");
         }
-
-        assertEquals(100, earth.getSociety());
-        assertEquals(20, earth.getResources());
-
-        assertFalse(earth.addSociety());
     }
 
     @Test
     public void testAddSocietyNoDPAndFull() {
 
         earth.addResources(100);
-        for (int count = 1; count <= 100; count++) {
-            earth.addSociety();
+        try {
+            earth.civilDevelopment(0, 100, 0);
+
+            assertEquals(100, earth.getSociety());
+            assertEquals(0, earth.getResources());
+
+            earth.civilDevelopment(0,100,0);
+            fail("Exception is expected!!");
+        } catch (OutOfResourcesException e) {
+            //expected
         }
-
-        assertEquals(100, earth.getSociety());
-        assertEquals(0, earth.getResources());
-
-        assertFalse(earth.addSociety());
     }
 
     @Test
     public void testAddCultureHasDPHasNotFull() {
-        assertEquals(0, earth.getCulture());
+        try {
+            assertEquals(0, earth.getCulture());
 
-        earth.addResources(5);
-        assertTrue(earth.addCulture());
-        assertTrue(earth.addCulture());
+            earth.addResources(5);
+            earth.civilDevelopment(0,0,2);
 
-
-        assertEquals(3, earth.getResources());
-        assertEquals(2, earth.getCulture());
+            assertEquals(3, earth.getResources());
+            assertEquals(2, earth.getCulture());
+        } catch (OutOfResourcesException e) {
+            fail("Exceptions is not expected");
+        }
     }
 
     @Test
     public void testAddCultureHasNoDP() {
-        assertFalse(earth.addCulture());
+        try {
+            earth.civilDevelopment(0,0,2);
+            fail("Exception is expected");
+        } catch (OutOfResourcesException e) {
+            //expected
+        }
     }
 
     @Test
     public void testAddCultureFull() {
         earth.addResources(120);
-        for (int count = 1; count <= 100; count++) {
-            earth.addCulture();
+        try {
+            earth.civilDevelopment(0,0,100);
+
+            assertEquals(100, earth.getCulture());
+            assertEquals(20, earth.getResources());
+
+            earth.civilDevelopment(0,0,10);
+            assertEquals(100,earth.getCulture());
+        } catch (OutOfResourcesException e) {
+            fail("Exception is not expected");
         }
-
-        assertEquals(100, earth.getCulture());
-        assertEquals(20, earth.getResources());
-
-        assertFalse(earth.addCulture());
     }
 
     @Test
     public void testAddCultureNoDPAndFull() {
         earth.addResources(100);
-        for (int count = 1; count <= 100; count++) {
-            earth.addCulture();
+        try {
+            earth.civilDevelopment(0, 0, 100);
+
+            assertEquals(100, earth.getCulture());
+            assertEquals(0, earth.getResources());
+
+            earth.civilDevelopment(0,0,100);
+            fail("Exception is expected!!");
+        } catch (OutOfResourcesException e) {
+            //expected
         }
-
-        assertEquals(100, earth.getCulture());
-        assertEquals(0, earth.getResources());
-
-        assertFalse(earth.addCulture());
     }
 
     @Test

@@ -4,6 +4,7 @@ import ui.exceptions.EndGameException;
 import model.Civilization;
 import model.Universe;
 import ui.UserApp;
+import ui.exceptions.OutOfResourcesException;
 
 import javax.swing.*;
 import javax.swing.border.Border;
@@ -172,10 +173,9 @@ public abstract class CivilizationPanel extends Panel {
 
     //EFFECTS: action for each round
     protected void roundAction(int t, int s, int c) {
-        if (myCivil.getResources() >= t + s + c) {
 
-            development(t, s, c);
-
+        try {
+            myCivil.civilDevelopment(t, s, c);
             roundNumber++;
             myCivil.addRoundNumber();
 
@@ -186,15 +186,18 @@ public abstract class CivilizationPanel extends Panel {
             } catch (EndGameException e) {
                 new UserApp();
             }
-
-        } else {
-            JFrame frame = new JFrame("Warning");
+        } catch (OutOfResourcesException e) {
+            JFrame frame = new JFrame("Warning!!");
             frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-            JOptionPane.showMessageDialog(frame,"You don't have enough resources to make the development\n"
-                    + "Please redistribute your resources[you only have " + myCivil.getResources() + " resources "
-                    + "points]");
+            JOptionPane.showMessageDialog(frame,"You don't have enough resources!\n"
+                        + "You only have " + myCivil.getResources() + " resources points\n"
+                        + "Redistribute please! ");
         }
+
+
     }
+
+
 
 
 
@@ -212,64 +215,6 @@ public abstract class CivilizationPanel extends Panel {
 
 
 
-    //EFFECTS: user will be assigned certain resources and user can decide how to distribute them
-    public void development(int tech, int society, int culture) {
-
-        teachDevelop(tech);
-        societyDevelop(society);
-        cultureDevelop(culture);
-    }
-
-    public void cultureDevelop(int c) {
-        if (myCivil.getCulture() + c <= myCivil.getDevelopmentLimits()) {
-            for (int i = 1; i <= c; i++) {
-                myCivil.addCulture();
-            }
-        } else {
-            JFrame frame = new JFrame("Message from controller");
-            frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-            JOptionPane.showMessageDialog(frame,"Your culture has reached development limits: "
-                    + myCivil.getDevelopmentLimits() + "points \n"
-                    + "You've advanced to the highest level possible.");
-
-            myCivil.setCulture(myCivil.getDevelopmentLimits());
-        }
-    }
-
-    //EFFECTS: develop society
-    public void societyDevelop(int s) {
-        if (myCivil.getSociety() + s <= myCivil.getDevelopmentLimits()) {
-            for (int i = 1; i <= s; i++) {
-                myCivil.addSociety();
-            }
-        } else {
-            JFrame frame = new JFrame("Message from controller");
-            frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-            JOptionPane.showMessageDialog(frame,"Your society has reached development limits: "
-                    + myCivil.getDevelopmentLimits() + "points \n"
-                    + "You've advanced to the highest level possible.");
-
-            myCivil.setSociety(myCivil.getDevelopmentLimits());
-        }
-    }
-
-    //EFFECTS: develop technology
-    public void teachDevelop(int t) {
-        if (myCivil.getTechnology() + t <= myCivil.getDevelopmentLimits()) {
-            for (int i = 1; i <= t; i++) {
-                myCivil.addTechnology();
-            }
-        } else {
-            JFrame frame = new JFrame("Message from controller");
-            frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-            JOptionPane.showMessageDialog(frame,"Your technology has reached development limits: "
-                    + myCivil.getDevelopmentLimits() + "points \n"
-                    + "You've advanced to the highest level possible.");
-
-            myCivil.setTechnology(myCivil.getDevelopmentLimits());
-        }
-
-    }
 
 
 
@@ -300,16 +245,19 @@ public abstract class CivilizationPanel extends Panel {
 
     //EFFECTS: other civilizations develop
     public void otherCivilDevelopment() {
+
         for (Civilization i : universe.getCivilizations()) {
             i.addResources(6);
-            i.addTechnology();
-            i.addTechnology();
-            i.addSociety();
-            i.addSociety();
-            i.addCulture();
-            i.addCulture();
+            try {
+
+                i.civilDevelopment(2,2,2);
+            } catch (OutOfResourcesException e) {
+                e.printStackTrace();
+            }
+
             i.addRoundNumber();
         }
+
     }
 
     //EFFECTS: round start action

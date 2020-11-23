@@ -29,9 +29,7 @@ public class UserApp extends JFrame {
     private CivilizationReader cvReader;
     private UniverseWriter uniWriter;
     private UniverseReader uniReader;
-    //deleted
-    private int roundNumber;
-    private int resourcesWillGet;
+
 
     static final Dimension FRAME_DIMENSION = new Dimension(1200, 742);
     private Panel mainPanel;

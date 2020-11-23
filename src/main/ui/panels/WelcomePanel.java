@@ -26,7 +26,7 @@ public class WelcomePanel extends Panel {
     //Sources : https://www.youtube.com/watch?v=-0_VuwvvS-k
     private static final String MUSIC = "./data/983316ffee0eaa3aab4ad7fdc85e6fcbb54e6840.wav "
             + "(online-audio-converter.com).wav";
-    private UserApp app;
+
 
     private List<JButton> backBts;
     private JButton playMusic;

@@ -37,4 +37,16 @@ A *bulleted* list:
 - As a user, I want to be able to choose to quit at the end of each round and store my current gaming process.
 - As a user, at the welcome panel, I want to have an option to reload my stored state of the gaming process.
   
+#PHASE 4: TASK 2
+- Design and test a robust class: civilization class 
+                           methods: civilDevelopment(t,s,c)
+- Type hierarchy: In persistence package, subclass "CivilizationReader" and "UniverseReader" extends super class "Reader"
+  subclass "CivilizationWriter" and "UniverseWriter" extend super class "Writer"
+  In ui package, subclass "CivilizationPanel","NewGamePanel", "TutorialPanel" and "WelcomePanel" extend abstract "Panel".
+  Additionally, "CivilizationPanel" is extended by "PrimitiveCivilizationPanel","Level1CivilizationPanel",
+  "Level2CivilizationPanel" and "StarPluckerPanel" 
+ 
+#PHASE 4 : TASK 3
+![Image](UML_Design_Diagram.png.png)
+
 

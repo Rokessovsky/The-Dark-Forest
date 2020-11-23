@@ -1,6 +1,7 @@
 package model;
 
 import org.json.JSONObject;
+import ui.exceptions.OutOfResourcesException;
 
 import java.util.Objects;
 
@@ -92,45 +93,63 @@ public class Civilization {
         resources += num;
     }
 
+    //MODIFIES: this
+    //EFFECTS: development of the civilization
+    public void civilDevelopment(int t, int s, int c) throws OutOfResourcesException {
+
+
+        if (resources >= t + s + c) {
+            for (int i = 0; i < t;i++) {
+                addTechnology();
+            }
+            for (int i = 0; i < s;i++) {
+                addSociety();
+            }
+            for (int i = 0; i < c;i++) {
+                addCulture();
+            }
+
+        } else {
+            throw new OutOfResourcesException();
+        }
+    }
+
     //MODIFIES:this
-    //EFFECTS: add technology level by 1 and return true if there're still available development points
-    //         and level hasn't reach the limits.Otherwise return false.
-    public Boolean addTechnology() {
-        if (resources > 0 && technology < developmentLimits) {
+    //EFFECTS: add technology level by 1
+    private void addTechnology() {
+        if (technology < developmentLimits) {
             technology++;
             resources--;
-            return true;
         } else {
-            return false;
+            setTechnology(developmentLimits);
         }
     }
 
 
     //MODIFIES:this
-    //EFFECTS: add society level by 1 and return true if there're still available development points
-    //         and level hasn't reach the limits.Otherwise return false.
-    public Boolean addSociety() {
-        if (resources > 0 && society < developmentLimits) {
+    //EFFECTS: add society level by 1
+    private void addSociety() {
+        if (society < developmentLimits) {
             society++;
             resources--;
-            return true;
         } else {
-            return false;
+            setSociety(developmentLimits);
         }
     }
 
+
     //MODIFIES:this
-    //EFFECTS: add culture level by 1 and return true if there're still available development points
-    //         and level hasn't reach the limits.Otherwise return false.
-    public Boolean addCulture() {
-        if (resources > 0 && culture < developmentLimits) {
+    //EFFECTS: add culture level by 1
+    private void addCulture() {
+        if (culture < developmentLimits) {
             culture++;
             resources--;
-            return true;
         } else {
-            return false;
+            setCulture(developmentLimits);
         }
     }
+
+
 
     //MODIFIES: this
     //EFFECTS: add round number by 1
