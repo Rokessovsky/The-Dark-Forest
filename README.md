@@ -49,4 +49,16 @@ A *bulleted* list:
 #PHASE 4 : TASK 3
 ![Image](UML_Design_Diagram.png.png)
 
+Future refactoring:
+
+- There is a bidirectional association between the civilization class and universe class. However, some of the methods 
+  fail to follow the association. For instance, the removeCivilization(Civilization cv) method in Universe only removes
+  civilization from the universe but doesn't call civilization to change its own universe field.
+
+- In civilization panel, there is a JLabel indicates the summary of the civilization. For now, the JLabel will update every
+  round. I want to refactor it so the JLabel will update when every there's change in civilization. I will use Observer design
+  pattern, by making civilization extend Observable and make the panel implement Observer.  
+
+- The biggest problem of this project is probably that I hardcoded all the texts, which makes it extremely hard if I want
+  to change the contents later.I'll change it later by refactoring those into lang or something else. 
 
